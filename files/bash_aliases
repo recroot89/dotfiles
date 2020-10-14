@@ -1,0 +1,44 @@
+# projects
+alias paygety='cd ~/Projects/paygety-rails && nvim .'
+alias exercism='cd ~/Projects/exercism && nvim .'
+alias sandbox='cd ~/Projects/sandbox && nvim .'
+alias bots='cd ~/Projects/bots && nvim .'
+alias dotfiles='cd ~/Projects/dotfiles && nvim .'
+
+#text editor
+alias v.='nvim .'
+alias v='nvim'
+alias c='code .'
+
+# git
+alias gcod='git checkout development'
+alias gc='git commit'
+alias gpoh='git push origin HEAD'
+alias gpom='git pull --rebase origin master'
+alias gpod='git pull --rebase origin development'
+alias gbr='git branch | grep -v "master" | xargs git branch -D'
+alias ghist='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+
+# ruby on rails
+alias wd='bin/webpack-dev-server'
+alias rr='rails routes | grep'
+alias rdbm='bin/rails db:migrate RAILS_ENV=development'
+alias rdbr='rails db:drop db:create db:migrate db:fixtures:load'
+alias irbs='irb --simple-prompt'
+alias bi='bundle install --jobs 20 --retry 5'
+alias bu='bundle update --jobs 20 --retry 5'
+
+# docker images cleanup
+alias dci='docker rmi $(docker images -f "dangling=true" -q) -f'
+
+
+### SYSADMIN ###
+
+alias scan='sudo nmap -sP'
+alias sysinfo='sudo inxi -Fx'
+# show loaded and active services
+alias shsrv='systemctl list-units --type=service'
+# show all services
+alias srvall='systemctl list-unit-files --type=service'
+
+alias lla='ls -la'

@@ -1,0 +1,14 @@
+---
+- hosts: all
+
+  tasks:
+
+    - file:
+        force: yes
+        src: "{{ curdir }}/files/{{ item }}"
+        dest: ~/.{{ item }}
+        state: link
+      with_items:
+        - bash_aliases
+        - tmux.conf
+        - zshrc

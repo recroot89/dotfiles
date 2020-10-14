@@ -1,0 +1,29 @@
+{
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": "# ",
+  "diagnostic-languageserver.filetypes": {
+    "markdown": ["write-good", "markdownlint"],
+    "ruby": ["solargraph"],
+    "php": "phpcs",
+    "elixir": ["mix_credo"],
+    "eelixir": ["mix_credo"]
+  },
+  "cSpellExt.enableDictionaries": ["russian"],
+  "cSpell.enabledLanguageIds": [
+    "markdown",
+    "plaintext",
+    "yml"
+  ],
+  "cSpell.language": "en,ru",
+  "prettier.printWidth": 120,
+  "prettier.trailingComma": "all",
+  "prettier.eslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+  "prettier.singleQuote": true,
+
+  "solargraph.commandPath": "/home/recroot/.asdf/shims/solargraph",
+  "solargraph.diagnostics": true,
+  "solargraph.autoformat": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true
+}
