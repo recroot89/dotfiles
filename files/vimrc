@@ -35,6 +35,8 @@ Plug 'lepture/vim-jinja', { 'for': 'jinja' }
 " Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'tpope/vim-surround'
 Plug 'isobit/vim-caddyfile'
+Plug 'APZelos/blamer.nvim'
+let g:blamer_enabled = 1
 
 " Targets.vim comes with five kinds for text objects:
 " Pair text objects
