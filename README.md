@@ -16,7 +16,7 @@
 $ git clone git@github.com:recroot89/dotfiles.git ~/dotfiles
 $ cd dotfiles
 $ make nvim-install
-# install dotfiles for bash/zsh and tmux
+# install dotfiles for zsh and tmux
 $ make dotfiles-install
 # install additional packages for some languages (see Makefile)
 $ make deps-all
@@ -33,6 +33,10 @@ $ make asdf-install
 
 #### Moving between visible buffers
 
+* `ctrl h` - move left or open new left split
+* `ctrl l` - move right or open new right split
+* `ctrl k` - move up or open new top split
+* `ctrl j` - move down or open new bottom split
 * `<leader> b` - show buffer list
 * `ctrl 6` - switch between two nearby buffers
 
