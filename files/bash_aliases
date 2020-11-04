@@ -29,8 +29,11 @@ alias bi='bundle install --jobs 20 --retry 5'
 alias bu='bundle update --jobs 20 --retry 5'
 
 # docker images cleanup
-alias dci='docker rmi $(docker images -f "dangling=true" -q) -f'
+alias dcci='docker rmi $(docker images -f "dangling=true" -q) -f'
 
+alias dcb='docker-compose build'
+alias dcu='docker-compose up'
+alias dcd='docker-compose down'
 
 ### SYSADMIN ###
 

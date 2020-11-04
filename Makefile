@@ -32,14 +32,14 @@ asdf-install:
 	asdf plugin-add clojure https://github.com/halcyon/asdf-clojure.git || echo 0
 
 	bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
-	asdf install nodejs 14.10.0
-	asdf global nodejs 14.10.0
+	asdf install nodejs 15.0.1
+	asdf global nodejs 15.0.1
 
-	asdf install erlang 23.0.4
-	asdf global erlang 23.0.4
+	asdf install erlang 23.1.1
+	asdf global erlang 23.1.1
 
-	asdf install elixir 1.10.4-otp-23
-	asdf global elixir 1.10.4
+	asdf install elixir 1.11.2-otp-23
+	asdf global elixir 1.11.2
 
 	asdf install ruby 2.7.2
 	asdf global ruby 2.7.2
