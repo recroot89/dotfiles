@@ -4,8 +4,9 @@ alias exercism='cd ~/Projects/exercism && nvim .'
 alias sandbox='cd ~/Projects/sandbox && nvim .'
 alias bots='cd ~/Projects/bots && nvim .'
 alias dotfiles='cd ~/Projects/dotfiles && nvim .'
+alias evernow='cd ~/Projects/mobile-backend && nvim .'
 
-#text editor
+# text editor
 alias v.='nvim .'
 alias v='nvim'
 alias c='code .'
@@ -28,9 +29,14 @@ alias irbs='irb --simple-prompt'
 alias bi='bundle install --jobs 20 --retry 5'
 alias bu='bundle update --jobs 20 --retry 5'
 
-# docker images cleanup
+# docker
+alias dps='docker ps'
+alias duon='docker update --restart=always'
+alias duoff='docker update --restart=no'
+# docker cleanup images
 alias dcci='docker rmi $(docker images -f "dangling=true" -q) -f'
 
+# docker-compose
 alias dcb='docker-compose build'
 alias dcu='docker-compose up'
 alias dcd='docker-compose down'
@@ -45,3 +51,4 @@ alias shsrv='systemctl list-units --type=service'
 alias srvall='systemctl list-unit-files --type=service'
 
 alias lla='ls -la'
+alias ports='ss -lntu'
