@@ -14,11 +14,12 @@ alias c='code .'
 # git
 alias gcod='git checkout development'
 alias gc='git commit'
-alias gpoh='git push origin HEAD'
+alias gpush='git push origin HEAD'
 alias gpom='git pull --rebase origin master'
 alias gpod='git pull --rebase origin development'
 alias gbr='git branch | grep -v "master" | xargs git branch -D'
 alias ghist='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias grss='git restore --staged'
 
 # ruby on rails
 alias wd='bin/webpack-dev-server'
@@ -31,6 +32,7 @@ alias bu='bundle update --jobs 20 --retry 5'
 
 # docker
 alias dps='docker ps'
+alias di='docker images'
 alias duon='docker update --restart=always'
 alias duoff='docker update --restart=no'
 # docker cleanup images
