@@ -29,6 +29,7 @@ Plug 'lepture/vim-jinja', { 'for': 'jinja' }
 Plug 'tpope/vim-surround'
 Plug 'isobit/vim-caddyfile'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'jparise/vim-graphql'
 
 " Targets.vim comes with five kinds for text objects:
 " Pair text objects

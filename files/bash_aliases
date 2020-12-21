@@ -12,18 +12,19 @@ alias v='nvim'
 alias c='code .'
 
 # git
-alias gcod='git checkout development'
 alias gc='git commit'
 alias gpush='git push origin HEAD'
-alias gpom='git pull --rebase origin master'
-alias gpod='git pull --rebase origin development'
+alias gpull='git pull --rebase origin master'
 alias gbr='git branch | grep -v "master" | xargs git branch -D'
 alias ghist='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 alias grss='git restore --staged'
+alias gcod='git checkout development'
+alias gpod='git pull --rebase origin development'
 
 # ruby on rails
 alias wd='bin/webpack-dev-server'
-alias rr='rails routes | grep'
+alias rr='rails routes'
+alias rrg='rails routes | grep'
 alias rdbm='bin/rails db:migrate RAILS_ENV=development'
 alias rdbr='rails db:drop db:create db:migrate db:fixtures:load'
 alias irbs='irb --simple-prompt'
@@ -32,7 +33,12 @@ alias bu='bundle update --jobs 20 --retry 5'
 
 # docker
 alias dps='docker ps'
+alias drit='docker run -it'
+alias deit='docker exec -it'
+alias dcna='docker container ls -a'
 alias di='docker images'
+alias drmi='docker rmi'
+alias dbu='docker build'
 alias duon='docker update --restart=always'
 alias duoff='docker update --restart=no'
 # docker cleanup images
@@ -42,6 +48,21 @@ alias dcci='docker rmi $(docker images -f "dangling=true" -q) -f'
 alias dcb='docker-compose build'
 alias dcu='docker-compose up'
 alias dcd='docker-compose down'
+alias dcr='docker-compose restart'
+
+# elixir phoenix
+alias mpn='mix phx.new'
+alias mpr='mix phx.routes'
+alias mps='mix phx.server'
+alias mdc='mix deps.compile'
+alias mdg='mix deps.get'
+alias mdgc='mix do deps.get, deps.compile'
+alias mecm='mix do ecto.create, ecto.migrate'
+alias mec='mix ecto.create'
+alias mem='mix ecto.migrate'
+alias merb='mix ecto.rollback'
+alias mers='mix ecto.reset'
+alias mes='mix ecto.setup'
 
 ### SYSADMIN ###
 
