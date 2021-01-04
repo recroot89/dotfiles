@@ -51,6 +51,8 @@ alias dcd='docker-compose down'
 alias dcr='docker-compose restart'
 
 # elixir phoenix
+alias ips='iex -S mix phx.server'
+alias ism='iex -S mix'
 alias mpn='mix phx.new'
 alias mpr='mix phx.routes'
 alias mps='mix phx.server'
@@ -61,8 +63,11 @@ alias mecm='mix do ecto.create, ecto.migrate'
 alias mec='mix ecto.create'
 alias mem='mix ecto.migrate'
 alias merb='mix ecto.rollback'
+alias megm='mix ecto.gen.migration'
 alias mers='mix ecto.reset'
 alias mes='mix ecto.setup'
+alias mpgh='mix phx.gen.html'
+alias mpgj='mix phx.gen.json'
 
 ### SYSADMIN ###
 
