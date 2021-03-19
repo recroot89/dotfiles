@@ -68,6 +68,10 @@ alias mers='mix ecto.reset'
 alias mes='mix ecto.setup'
 alias mpgh='mix phx.gen.html'
 alias mpgj='mix phx.gen.json'
+alias mpgs='mix phx.gen.schema'
+alias mpgc='mix phx.gen.context'
+alias mr='mix run'
+alias mt='mix test'
 
 ### SYSADMIN ###
 
