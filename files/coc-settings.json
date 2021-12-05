@@ -25,5 +25,9 @@
   "solargraph.diagnostics": true,
   "solargraph.autoformat": true,
   "solargraph.formatting": true,
-  "solargraph.hover": true
+  "solargraph.hover": true,
+
+  "python.linting.flake8Enabled": true,
+  "python.linting.banditEnabled": true,
+  "python.linting.pytypeEnabled": true
 }

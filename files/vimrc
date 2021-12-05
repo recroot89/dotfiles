@@ -117,13 +117,13 @@ let g:coc_global_extensions = [
       \ 'coc-phpls',
       \ 'coc-sh',
       \ 'coc-css',
-      \ 'coc-stylelint',
+      \ 'coc-stylelintplus',
       \ 'coc-vimlsp',
       \ 'coc-go',
       \ 'coc-elixir',
       \ 'coc-json',
       \ 'coc-eslint',
-      \ 'coc-python',
+      \ 'coc-pyright',
       \ 'coc-java',
       \ 'coc-jest',
       \ 'coc-solargraph',
@@ -287,6 +287,10 @@ nnoremap <Leader>o :GFiles .<CR>
 nnoremap <leader>fc :Commits<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fa :Ag<CR>
+
+nnoremap <silent> <Leader>gb :Git blame<CR>
+" nnoremap <silent> <Leader>gs :Git status<CR>
+" nnoremap <silent> <leader>gd :Git diff origin/HEAD<CR>
 
 let NERDTreeIgnore = ['\.pyc$', '\.retry$']
 
