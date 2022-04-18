@@ -16,7 +16,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -67,8 +67,10 @@ plugins=(
   git
   asdf
   git-flow-avh
+  sudo
   zsh-autosuggestions
   zsh-syntax-highlighting
+  env
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -90,15 +92,8 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-source ~/.bash_aliases
+source ~/.aliases
+source ~/.my_aliases
 
 . $HOME/.asdf/asdf.sh
 
@@ -108,3 +103,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(direnv hook zsh)"

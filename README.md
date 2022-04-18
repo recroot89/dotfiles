@@ -10,6 +10,10 @@
 * [bat](https://github.com/sharkdp/bat)
 * [fd](https://github.com/sharkdp/fd)
 
+#### Recommendations
+
+* [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh)
+
 ### Setup
 
 ```sh
@@ -58,6 +62,17 @@ $ make asdf-install
 * `gf` - open a file corresponding to a word under the cursor
 * `gd` - go to definition
 * `]с` and `[с` - go through linter errors
+* `g;` – go to the last edited line in the current opened buffer
+* `gS` – convert oneline expression to multiline (useful for functions, arguments, data structures)
+* `gv` – reselect last visual selection
+* `<ctrl> n` – insert next matching word (multicursor)
+* `]g` and `[g` – go through linter errors
+* `"y` & `"p` – copy text to system clipboard
+* `]<leader>` and `[<leader>` – add  empty line  above and under cursor
+* `<leader> d` – coc diagnostic
+* `<leader> f` – format in visual mode (prettier)
+* `<leader> fr` – search & replace
+* `<leader> rn` – replace word under cursor in current file
 
 
 #### Misc
@@ -66,3 +81,4 @@ $ make asdf-install
 * `:PlugUpdate` - update plugins
 * `:PlugUpgrade` - update Plug
 * `:Gblame` - run git blame
+* `:CocCommand java.updateLanguageServer` - coc-pyright

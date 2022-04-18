@@ -49,8 +49,8 @@ asdf-install:
 	asdf install elixir 1.11.2-otp-23
 	asdf global elixir 1.11.2
 
-	asdf install ruby 2.7.3
-	asdf global ruby 2.7.3
+	asdf install ruby 2.7.5
+	asdf global ruby 2.7.5
 
 	asdf install java openjdk-15
 	asdf global java openjdk-15
