@@ -9,6 +9,7 @@
         dest: ~/.{{ item }}
         state: link
       with_items:
-        - bash_aliases
+        - aliases
+        - my_aliases
         - tmux.conf
         - zshrc
