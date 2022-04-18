@@ -1,8 +1,4 @@
-setglobal nocompatible
-setglobal pastetoggle=<F2>
-
-set ttyfast
-set lazyredraw
+let mapleader = "\<Space>"
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -10,26 +6,42 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" https://github.com/chrisbra/matchit
+:packadd! matchit
+
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-sensible'
+"" MUST HAVE
+
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'liuchengxu/vista.vim'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-sensible'
 Plug 'honza/vim-snippets'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+" advanced welcome screen
 Plug 'mhinz/vim-startify'
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'chr4/nginx.vim'
-Plug 'janko-m/vim-test'
-Plug 'lepture/vim-jinja', { 'for': 'jinja' }
-Plug 'tpope/vim-surround'
 Plug 'isobit/vim-caddyfile'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'jparise/vim-graphql'
+Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdcommenter'
+Plug 'rlue/vim-barbaric'
+Plug 'nanotech/jellybeans.vim'
+Plug 'dyng/ctrlsf.vim'
+Plug 'dense-analysis/ale'
+Plug 'vim-airline/vim-airline'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'windwp/nvim-spectre'
+Plug 'OmniSharp/omnisharp-vim'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'liuchengxu/vista.vim'
 
 " Targets.vim comes with five kinds for text objects:
 " Pair text objects
@@ -38,58 +50,48 @@ Plug 'jparise/vim-graphql'
 " Argument text objects
 " Tag text objects
 Plug 'wellle/targets.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-unimpaired'
-Plug 'nanotech/jellybeans.vim'
-Plug 'dyng/ctrlsf.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-projectionist'
-Plug 'othree/html5.vim'
-Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
-Plug 'slim-template/vim-slim', { 'for': ['slim', 'slime'] }
-Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
-Plug 'c-brenn/phoenix.vim', { 'for': 'elixir' }
-Plug 'editorconfig/editorconfig-vim'
-Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
-Plug 'vim-erlang/vim-erlang-compiler', { 'for': 'erlang' }
 " Auto close parentheses and repeat by dot dot dot...
 Plug 'cohama/lexima.vim'
 
-Plug 'jwalton512/vim-blade', { 'for': 'php' }
-Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
-Plug 'noahfrederick/vim-composer', { 'for': 'php' }
-Plug 'noahfrederick/vim-laravel', { 'for': 'php' }
+""LANGAUGE SPECIFIC
+
+Plug 'sheerun/vim-polyglot'
+Plug 'editorconfig/editorconfig-vim'
+
+Plug 'janko-m/vim-test'
+Plug 'lepture/vim-jinja', { 'for': 'jinja' }
+Plug 'tpope/vim-haml', { 'for': 'haml' }
+Plug 'slim-template/vim-slim', { 'for': ['slim', 'slime'] }
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+Plug 'othree/html5.vim'
+Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
+Plug 'jparise/vim-graphql'
+
+Plug 'c-brenn/phoenix.vim', { 'for': 'elixir' }
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
+Plug 'vim-erlang/vim-erlang-runtime', { 'for': 'erlang' }
+Plug 'vim-erlang/vim-erlang-compiler', { 'for': 'erlang' }
+
+" Plug 'jwalton512/vim-blade', { 'for': 'php' }
+" Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
+" Plug 'noahfrederick/vim-composer', { 'for': 'php' }
+" Plug 'noahfrederick/vim-laravel', { 'for': 'php' }
 
 Plug 'joonty/vdebug', { 'on': 'VdebugStart' }
 Plug 'rhysd/vim-clang-format', { 'for': ['c', 'cpp'] }
-" Plug 'tpope/vim-ragtag'
-
-" Plug 'eagletmt/ghcmod-vim'
-" Plug 'eagletmt/ghcmod-vim'
-" Plug 'neovimhaskell/haskell-vim'
 
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'maxmellon/vim-jsx-pretty', { 'for': 'javascript' }
 Plug 'udalov/kotlin-vim', { 'for': 'kotlin' }
-" Plug 'moll/vim-node'
-" Plug 'mattn/emmet-vim', { 'for': 'html' }
-
-" Plug 'xolox/vim-misc'
-" Plug 'xolox/vim-easytags'
-" Plug 'Valloric/MatchTagAlways'
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
-Plug 'tpope/vim-haml', { 'for': 'haml' }
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
-" Plug 'michaeljsmith/vim-indent-object'
-
-" Clojure
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'tpope/vim-leiningen', { 'for': 'clojure' }
 Plug 'tpope/vim-classpath', { 'for': 'clojure' }
@@ -99,16 +101,28 @@ Plug 'venantius/vim-eastwood', { 'for': 'clojure' }
 Plug 'kovisoft/slimv', { 'for': ['clojure', 'scheme', 'racket'] }
 Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
 
-" Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
-" Plug 'henrik/vim-yaml-flattener'
-
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
+
+" Plug 'tpope/vim-ragtag'
+" Plug 'eagletmt/ghcmod-vim'
+" Plug 'eagletmt/ghcmod-vim'
+" Plug 'neovimhaskell/haskell-vim'
+" Plug 'moll/vim-node'
+" Plug 'mattn/emmet-vim', { 'for': 'html' }
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-easytags'
+" Plug 'Valloric/MatchTagAlways'
+" Plug 'michaeljsmith/vim-indent-object'
+" Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
+" Plug 'henrik/vim-yaml-flattener'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
       \ 'coc-tabnine',
       \ 'coc-cspell-dicts',
+      \ 'coc-markdownlint',
+      \ 'coc-omnisharp',
       \ 'coc-spell-checker',
       \ 'coc-tsserver',
       \ 'coc-prettier',
@@ -132,21 +146,26 @@ let g:coc_global_extensions = [
       \ 'coc-snippets',
       \ 'coc-docker',
       \ 'coc-diagnostic',
+      \ 'coc-yank',
+      \ 'coc-git',
       \]
 
 call plug#end()
 
-" set rtp+=/root/.fzf
+syntax on
+filetype plugin on
 
-let mapleader = "\<Space>"
+" set rtp+=/root/.fzf
 
 " https://github.com/vim/vim/blob/master/runtime/doc/russian.txt
 " Enable hotkeys for Russian layout
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
+silent! colorscheme jellybeans
+
 " set visualbell
-set completeopt=noinsert,menuone,noselect
-set complete+=kspell
+" set completeopt=noinsert,menuone,noselect
+" set complete+=kspell
 
 if has('mouse')
   set mouse=a
@@ -212,8 +231,6 @@ set splitbelow
 set cmdheight=2
 set signcolumn=no
 set scrolloff=3
-
-silent! colorscheme jellybeans
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -461,6 +478,8 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 "" Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+nmap <C-p> <Plug>MarkdownPreview
+
 " Using CocList
 " Show all diagnostics
 " nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
@@ -482,3 +501,21 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 vmap <leader>y :w! /tmp/.vim/.vbuf<CR>
 nmap <leader>y :.w! /tmp/.vim/.vbuf<CR>
 nmap <leader>p :r /tmp/.vim/.vbuf<CR>
+
+nnoremap <leader>s :lua require('spectre').open()<CR>
+
+" let g:airline#extensions#ale#enabled = 1
+let g:ale_disable_lsp = 1
+
+let g:ale_java_checkstyle_config = 'config/checkstyle/checkstyle.xml'
+
+let g:ale_sign_column_always = 1
+let g:ale_linters_explicit = 1
+let g:ale_sign_highlight_linenrs = 1
+let g:ale_linters = {
+\   'haml': ['hamllint'],
+\   'slim': ['slimlint'],
+\   'java': ['checkstyle'],
+\   'ruby': ['brakeman', 'reek'],
+\   'go': ['staticcheck'],
+\}
