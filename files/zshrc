@@ -67,7 +67,6 @@ plugins=(
   git
   asdf
   git-flow-avh
-  sudo
   zsh-autosuggestions
   zsh-syntax-highlighting
 )

@@ -4,6 +4,9 @@ TAGS := all
 
 PACKER_PATH=~/.local/share/nvim/site/pack/packer/start
 
+prepare-nvim:
+	sudo pacman -S the_silver_searcher bat fd
+
 old-nvim-install:
 	ansible-playbook nvim.yml -i local -vvv -e curdir=$(CURDIR) -K
 
@@ -22,6 +25,7 @@ nvim-setup:
 nvim-install: nvim-clean nvim-setup
 
 dotfiles-install:
+	touch $(CURDIR)/files/my_aliases
 	ansible-playbook dotfiles.yml -i local -vvv -e curdir=$(CURDIR) -K
 
 deps: deps-gem deps-npm deps-pip
@@ -55,7 +59,6 @@ asdf-install:
 	asdf plugin-add java https://github.com/halcyon/asdf-java.git || echo 0
 	asdf plugin-add clojure https://github.com/halcyon/asdf-clojure.git || echo 0
 
-	bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
 	asdf install nodejs 16.1.0
 	asdf global nodejs 16.1.0
 
@@ -65,8 +68,8 @@ asdf-install:
 	asdf install elixir 1.11.2-otp-23
 	asdf global elixir 1.11.2
 
-	asdf install ruby 2.7.5
-	asdf global ruby 2.7.5
+	asdf install ruby 2.7.6
+	asdf global ruby 2.7.6
 
 	asdf install java openjdk-15
 	asdf global java openjdk-15
