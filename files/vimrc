@@ -82,24 +82,24 @@ Plug 'vim-erlang/vim-erlang-compiler', { 'for': 'erlang' }
 " Plug 'noahfrederick/vim-laravel', { 'for': 'php' }
 
 Plug 'joonty/vdebug', { 'on': 'VdebugStart' }
-Plug 'rhysd/vim-clang-format', { 'for': ['c', 'cpp'] }
+" Plug 'rhysd/vim-clang-format', { 'for': ['c', 'cpp'] }
 
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'maxmellon/vim-jsx-pretty', { 'for': 'javascript' }
-Plug 'udalov/kotlin-vim', { 'for': 'kotlin' }
+" Plug 'udalov/kotlin-vim', { 'for': 'kotlin' }
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
-Plug 'tpope/vim-leiningen', { 'for': 'clojure' }
-Plug 'tpope/vim-classpath', { 'for': 'clojure' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'venantius/vim-eastwood', { 'for': 'clojure' }
+" Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+" Plug 'tpope/vim-leiningen', { 'for': 'clojure' }
+" Plug 'tpope/vim-classpath', { 'for': 'clojure' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" Plug 'venantius/vim-eastwood', { 'for': 'clojure' }
 
-Plug 'kovisoft/slimv', { 'for': ['clojure', 'scheme', 'racket'] }
-Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
+" Plug 'kovisoft/slimv', { 'for': ['clojure', 'scheme', 'racket'] }
+" Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
 
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
@@ -499,15 +499,19 @@ nnoremap <leader>s :lua require('spectre').open()<CR>
 " let g:airline#extensions#ale#enabled = 1
 let g:ale_disable_lsp = 1
 
-let g:ale_java_checkstyle_config = 'config/checkstyle/checkstyle.xml'
-
 let g:ale_sign_column_always = 1
 let g:ale_linters_explicit = 1
 let g:ale_sign_highlight_linenrs = 1
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'css': ['stylelint'],
+\   'javascript': ['eslint'],
+\   'ruby': ['rubocop'],
+\}
 let g:ale_linters = {
+\   'css': ['stylelint'],
+\   'javascript': ['eslint'],
 \   'haml': ['hamllint'],
 \   'slim': ['slimlint'],
-\   'java': ['checkstyle'],
-\   'ruby': ['brakeman', 'reek'],
-\   'go': ['staticcheck'],
+\   'ruby': ['solargraph'],
 \}
