@@ -47,33 +47,18 @@ deps-npm:
 
 deps-pip:
 	pip3 install --upgrade pynvim
-	pip3 install --upgrade vim-vint
+	pip3 install --upgrade vim-vint spellcheck yamllint codespell
 	pip3 install --upgrade autopep8 flake8 bandit pytype
 
+asdf-setup:
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2 || echo 0
+	asdf plugin add ruby
+	asdf plugin add nodejs
+
 asdf-install:
-	asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git || echo 0
-	asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git || echo 0
-
-	asdf install nodejs 16.1.0
-	asdf global nodejs 16.1.0
-
-	asdf install ruby 2.7.6
-	asdf global ruby 2.7.6
-
-	# git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1 || echo 0
-	# asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git || echo 0
-	# asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git || echo 0
-	# asdf plugin-add java https://github.com/halcyon/asdf-java.git || echo 0
-	# asdf plugin-add clojure https://github.com/halcyon/asdf-clojure.git || echo 0
-
-	# asdf install erlang 23.1.1
-	# asdf global erlang 23.1.1
-
-	# asdf install elixir 1.11.2-otp-23
-	# asdf global elixir 1.11.2
-
-	# asdf install java openjdk-15
-	# asdf global java openjdk-15
-
-	# asdf install clojure 1.10.1
-	# asdf global clojure 1.10.1
+	asdf update
+	asdf plugin update --all
+	asdf install nodejs latest
+	asdf global nodejs latest
+	asdf install ruby latest
+	asdf global ruby latest
