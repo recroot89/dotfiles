@@ -10,6 +10,10 @@
 * [bat](https://github.com/sharkdp/bat)
 * [fd](https://github.com/sharkdp/fd)
 
+```sh
+$ make prepare-nvim
+```
+
 #### Recommendations
 
 * [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh)
@@ -22,9 +26,9 @@ $ cd dotfiles
 # install asdf with plugins (see Makefile)
 $ make asdf-install
 # nvim with old configuration
-$ make old-nvim-install
-# nvim with new configuration (new plugins)
 $ make nvim-install
+# nvim with new configuration (new plugins)
+$ make new-nvim-install
 # install dotfiles for zsh and tmux
 $ make dotfiles-install
 # install additional packages for some languages (see Makefile)
