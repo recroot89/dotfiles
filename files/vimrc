@@ -513,5 +513,5 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'haml': ['hamllint'],
 \   'slim': ['slimlint'],
-\   'ruby': ['solargraph'],
+\   'ruby': ['solargraph', 'brakeman'],
 \}

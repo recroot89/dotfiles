@@ -7,7 +7,7 @@ PACKER_PATH=~/.local/share/nvim/site/pack/packer/start
 prepare-nvim:
 	sudo pacman -S the_silver_searcher bat fd
 
-old-nvim-install:
+nvim-install:
 	ansible-playbook nvim.yml -i local -vvv -e curdir=$(CURDIR) -K
 
 nvim-clean:
@@ -22,7 +22,7 @@ nvim-setup:
 	ln -snf $(PWD)/nvim ~/.config/nvim
 	nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
-nvim-install: nvim-clean nvim-setup
+new-nvim-install: nvim-clean nvim-setup
 
 dotfiles-install:
 	touch $(CURDIR)/files/my_aliases

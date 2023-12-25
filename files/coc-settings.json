@@ -23,13 +23,8 @@
     "eelixir": ["mix_credo"]
   },
   "cSpellExt.enableDictionaries": ["russian"],
-  "cSpell.enabledLanguageIds": ["markdown", "plaintext", "yml", "php", "node", "python", "html", "css"],
+  "cSpell.enabledLanguageIds": ["markdown", "plaintext", "yml", "node", "python", "html", "css"],
   "cSpell.language": "en,ru",
-  "prettier.printWidth": 120,
-  "prettier.trailingComma": "all",
-  "prettier.eslintIntegration": true,
-  "prettier.stylelintIntegration": true,
-  "prettier.singleQuote": true,
   "markdownlint.config": {
     "line_length": false,
     "first-line-h1": false
@@ -40,5 +35,7 @@
   "solargraph.hover": true,
   "python.linting.flake8Enabled": true,
   "python.linting.banditEnabled": true,
-  "python.linting.pytypeEnabled": true
+  "python.linting.pytypeEnabled": true,
+  "eslint.format.enable": true,
+  "eslint.autoFixOnSave": true
 }
