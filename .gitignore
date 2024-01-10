@@ -1,2 +1,3 @@
 files/my_aliases
 nvim/plugin/*
+.tool-versions

@@ -6,13 +6,12 @@ alias c='code .'
 # git
 alias gc='git commit'
 alias gpush='git push origin HEAD'
-alias gpull='git pull --rebase origin master'
-alias gbrm='git branch | grep -v "master" | xargs git branch -D'
+alias gbrm='git branch | grep -v "main" | xargs git branch -D'
 alias gbrd='git branch | grep -v "develop" | xargs git branch -D'
 alias ghist='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 alias grss='git restore --staged'
-alias gcod='git checkout develop'
-alias gpod='git pull --rebase origin develop'
+
+alias irbs='irb --simple-prompt'
 
 # ruby on rails
 alias wd='bin/webpack-dev-server'
@@ -21,7 +20,6 @@ alias rr='rails routes'
 alias rrg='rails routes | grep'
 alias rdbm='bin/rails db:migrate RAILS_ENV=development'
 alias rdbr='rails db:drop db:create db:migrate db:seed'
-alias irbs='irb --simple-prompt'
 alias bi='bundle install --jobs 20 --retry 5'
 alias bu='bundle update --jobs 20 --retry 5'
 
@@ -37,6 +35,8 @@ alias duon='docker update --restart=always'
 alias duoff='docker update --restart=no'
 # docker cleanup images
 alias dcci='docker rmi $(docker images -f "dangling=true" -q) -f'
+# docker cleanup volumes
+alias dcvi='docker volume rm $(docker volume ls -qf dangling=true)'
 
 # docker-compose
 alias dcb='docker-compose build'
@@ -80,3 +80,4 @@ alias srvall='systemctl list-unit-files --type=service'
 alias lla='ls -la'
 alias ports='ss -lntu'
 alias startup_errors='journalctl -p err -b'
+alias previous_boot_errors='journalctl --boot=-1 --priority=3 --catalog --no-pager'

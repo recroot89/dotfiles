@@ -3,6 +3,7 @@ all: nvim-install dotfiles-install
 TAGS := all
 
 PACKER_PATH=~/.local/share/nvim/site/pack/packer/start
+ZSH_PLUGINS_PATH=~/.oh-my-zsh/plugins
 
 prepare-nvim:
 	sudo pacman -S the_silver_searcher bat fd
@@ -51,7 +52,7 @@ deps-pip:
 	pip3 install --upgrade autopep8 flake8 bandit pytype
 
 asdf-setup:
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2 || echo 0
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1 || echo 0
 	asdf plugin add ruby
 	asdf plugin add nodejs
 
@@ -62,3 +63,7 @@ asdf-install:
 	asdf global nodejs latest
 	asdf install ruby latest
 	asdf global ruby latest
+
+zsh-setup:
+	sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $(ZSH_PLUGINS_PATH)/zsh-syntax-highlighting
+	sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $(ZSH_PLUGINS_PATH)/zsh-autosuggestions
