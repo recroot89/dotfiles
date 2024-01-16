@@ -5,8 +5,8 @@ TAGS := all
 PACKER_PATH=~/.local/share/nvim/site/pack/packer/start
 ZSH_PLUGINS_PATH=~/.oh-my-zsh/plugins
 
-prepare-nvim:
-	sudo pacman -S the_silver_searcher bat fd
+prepare-os:
+	sudo pacman -S the_silver_searcher bat fd unzip xclip postgresql-lib
 
 nvim-install:
 	ansible-playbook nvim.yml -i local -vvv -e curdir=$(CURDIR) -K
@@ -46,6 +46,7 @@ deps-npm:
 	npm install -g yaml-language-server markdownlint bash-language-server
 	npm install -g dockerfile-language-server-nodejs
 
+# deprecated for Manjaro/Arch
 deps-pip:
 	pip3 install --upgrade pynvim
 	pip3 install --upgrade vim-vint spellcheck yamllint codespell

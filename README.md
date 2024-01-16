@@ -3,7 +3,7 @@
 * [Nvim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 * [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
-#### Global install
+### Global install
 
 * [Silver Searcher (ag)](https://github.com/ggreer/the_silver_searcher)
 * [fzf](https://github.com/junegunn/fzf)
@@ -11,28 +11,31 @@
 * [fd](https://github.com/sharkdp/fd)
 
 ```sh
-$ make prepare-nvim
+# install required packages for Arch/Manjaro
+$ make prepare-os
+# install oh-my-zsh plugins (after installing oh-my-zsh)
+$ make zsh-setup
 ```
 
 #### Recommendations
 
 * [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh)
 
-### Setup old configuration
+### Setup configuration
 
 ```sh
 $ git clone git@github.com:recroot89/dotfiles.git ~/dotfiles
-$ cd dotfiles
+$ cd ~/dotfiles
 # install asdf with plugins (see Makefile)
 $ make asdf-install
-# nvim with old configuration
-$ make nvim-install
-# nvim with new configuration (new plugins)
-$ make new-nvim-install
-# install dotfiles for zsh and tmux
+# install dotfiles
 $ make dotfiles-install
 # install additional packages for some languages (see Makefile)
 $ make deps-all
+# nvim with old configuration (vimrc)
+$ make nvim-install
+# nvim with new configuration (Lua)
+$ make new-nvim-install
 ```
 
 ### VIM (Old configuration)
@@ -81,7 +84,6 @@ $ make deps-all
 * `<leader> f` – format in visual mode (prettier)
 * `<leader> fr` – search & replace
 * `<leader> rn` – replace word under cursor in current file
-
 
 #### Misc
 
