@@ -2,11 +2,10 @@ all: nvim-install dotfiles-install
 
 TAGS := all
 
-PACKER_PATH=~/.local/share/nvim/site/pack/packer/start
 ZSH_PLUGINS_PATH=~/.oh-my-zsh/plugins
 
 prepare-os:
-	sudo pacman -S the_silver_searcher bat fd unzip xclip postgresql-lib
+	sudo pacman -S the_silver_searcher bat fd unzip xclip postgresql-lib ripgrep
 
 nvim-install:
 	ansible-playbook nvim.yml -i local -vvv -e curdir=$(CURDIR) -K
@@ -15,21 +14,17 @@ nvim-clean:
 	rm -rf nvim/plugin || exit 0
 	rm -rf ~/.local/share/nvim || exit 0
 	rm -rf ~/.config/nvim || exit 0
-	rm -rf $(PACKER_PATH) || exit 0
 
 nvim-setup:
-	mkdir -p $(PACKER_PATH)
-	git clone --depth 1 https://github.com/wbthomason/packer.nvim $(PACKER_PATH)/packer.nvim
 	ln -snf $(PWD)/nvim ~/.config/nvim
-	nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
-new-nvim-install: nvim-clean nvim-setup
+lazyvim-install: nvim-clean nvim-setup
 
 dotfiles-install:
 	touch $(CURDIR)/files/my_aliases
 	ansible-playbook dotfiles.yml -i local -vvv -e curdir=$(CURDIR) -K
 
-deps: deps-gem deps-npm deps-pip
+deps: deps-gem deps-npm
 
 deps-gem:
 	gem install solargraph rubocop neovim

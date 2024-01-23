@@ -2,6 +2,7 @@
 
 * [Nvim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 * [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+* [Nerd Fonts](https://www.nerdfonts.com/) (optional)
 
 ### Global install
 
@@ -34,9 +35,13 @@ $ make dotfiles-install
 $ make deps-all
 # nvim with old configuration (vimrc)
 $ make nvim-install
-# nvim with new configuration (Lua)
-$ make new-nvim-install
+# nvim with new configuration (LazyVim)
+$ make lazyvim-install
 ```
+
+### LazyVim (New configuration)
+
+* [Keymaps](https://www.lazyvim.org/keymaps)
 
 ### VIM (Old configuration)
 
