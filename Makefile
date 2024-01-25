@@ -2,8 +2,6 @@ all: nvim-install dotfiles-install
 
 TAGS := all
 
-ZSH_PLUGINS_PATH=~/.oh-my-zsh/plugins
-
 prepare-os:
 	sudo pacman -S the_silver_searcher bat fd unzip xclip postgresql-lib ripgrep
 
@@ -47,11 +45,6 @@ deps-pip:
 	pip3 install --upgrade vim-vint spellcheck yamllint codespell
 	pip3 install --upgrade autopep8 flake8 bandit pytype
 
-asdf-setup:
-	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1 || echo 0
-	asdf plugin add ruby
-	asdf plugin add nodejs
-
 asdf-install:
 	asdf update
 	asdf plugin update --all
@@ -59,7 +52,3 @@ asdf-install:
 	asdf global nodejs latest
 	asdf install ruby latest
 	asdf global ruby latest
-
-zsh-setup:
-	sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $(ZSH_PLUGINS_PATH)/zsh-syntax-highlighting
-	sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $(ZSH_PLUGINS_PATH)/zsh-autosuggestions
