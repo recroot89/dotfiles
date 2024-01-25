@@ -1,51 +1,51 @@
-all:
-	./install.sh
-	nvim-install
-	deps
+all: install nvim-install deps
 
 TAGS := all
 
 prepare-os:
 	sudo pacman -S fzf the_silver_searcher bat fd unzip xclip postgresql-lib ripgrep
 
+dotfiles-install:
+	touch $(CURDIR)/files/my_aliases
+	ln -snf $(PWD)/files/aliases ~/.aliases
+	ln -snf $(PWD)/files/my_aliases ~/.my_aliases
+	ln -snf $(PWD)/files/tmux.conf ~/.tmux.conf
+	ln -snf $(PWD)/files/zshrc ~/.zshrc
+
 nvim-install:
-	ansible-playbook nvim.yml -i local -vvv -e curdir=$(CURDIR) -K
+	mkdir -p ~/.config/nvim
+	ln -snf $(PWD)/files/vimrc ~/.config/nvim/init.vim
+	ln -snf $(PWD)/files/coc-settings.json ~/.config/nvim/coc-settings.json
 
 nvim-clean:
-	rm -rf nvim/plugin || exit 0
 	rm -rf ~/.local/share/nvim || exit 0
 	rm -rf ~/.config/nvim || exit 0
 
-nvim-setup:
+lazyvim-install:
 	ln -snf $(PWD)/nvim ~/.config/nvim
-
-lazyvim-install: nvim-clean nvim-setup
-
-dotfiles-install:
-	touch $(CURDIR)/files/my_aliases
-	ansible-playbook dotfiles.yml -i local -vvv -e curdir=$(CURDIR) -K
 
 deps: deps-gem deps-npm
 
 deps-gem:
-	gem install solargraph rubocop neovim
-	gem install rubocop-rspec rubocop-rails rubocop-performance rubocop-rake
+	gem install neovim
+	gem install solargraph solargraph-rails
+	gem install rubocop rubocop-rspec rubocop-rails rubocop-performance rubocop-rake
 	gem install sorbet sorbet-runtime
-	gem install haml_lint slim_lint
+	gem install haml_lint slim_lint erb_lint
 	gem install brakeman reek
 
 deps-npm:
 	npm install -g neovim
-	npm install -g prettier eslint @babel/eslint-parser eslint-plugin-import eslint-plugin-node
-	npx install-peerdeps -g eslint-config-airbnb
+	npm install -g prettier eslint eslint-plugin-import eslint-plugin-node
+	npx install-peerdeps -yg eslint-config-airbnb
 	npm install -g stylelint stylelint-config-recommended stylelint-config-standard
-	npm install -g yaml-language-server markdownlint bash-language-server
+	npm install -g yaml-language-server markuplint markdownlint-cli bash-language-server jsonlint
 	npm install -g dockerfile-language-server-nodejs
 
 # deprecated for Manjaro/Arch
 deps-pip:
 	pip3 install --upgrade pynvim
-	pip3 install --upgrade vim-vint spellcheck yamllint codespell
+	pip3 install --upgrade vim-vint spellcheck yamllint codespell ansible-lint
 	pip3 install --upgrade autopep8 flake8 bandit pytype
 
 asdf-install:
@@ -55,3 +55,6 @@ asdf-install:
 	asdf global nodejs latest
 	asdf install ruby latest
 	asdf global ruby latest
+
+install:
+	./install.sh

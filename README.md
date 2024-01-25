@@ -1,7 +1,7 @@
 ## Requirements
 
 * [Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
-* [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+* [Zsh](https://wiki.archlinux.org/title/zsh)
 
 ### Global install
 
@@ -13,15 +13,15 @@
 ### Recommendations
 
 * [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh)
-* [Nerd Fonts](https://www.nerdfonts.com/) (optional for LazyVim)
+* [Nerd Fonts](https://www.nerdfonts.com/) (fonts and icons for LazyVim)
 
 ### Setup configuration
 
 ```sh
 $ git clone git@github.com:recroot89/dotfiles.git ~/dotfiles
 $ cd ~/dotfiles
-# install oh-my-zh and asdf with plugins
-$ ./install.sh
+# install dotfiles, oh-my-zh and asdf with plugins
+$ make install
 # install packages for Arch/Manjaro
 $ make prepare-os
 # install additional packages (see Makefile)
