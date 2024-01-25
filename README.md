@@ -1,8 +1,7 @@
 ## Requirements
 
-* [Nvim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+* [Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 * [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
-* [Nerd Fonts](https://www.nerdfonts.com/) (optional)
 
 ### Global install
 
@@ -11,29 +10,23 @@
 * [bat](https://github.com/sharkdp/bat)
 * [fd](https://github.com/sharkdp/fd)
 
-```sh
-# install required packages for Arch/Manjaro
-$ make prepare-os
-# install oh-my-zsh plugins (after installing oh-my-zsh)
-$ make zsh-setup
-```
-
-#### Recommendations
+### Recommendations
 
 * [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh)
+* [Nerd Fonts](https://www.nerdfonts.com/) (optional for LazyVim)
 
 ### Setup configuration
 
 ```sh
 $ git clone git@github.com:recroot89/dotfiles.git ~/dotfiles
 $ cd ~/dotfiles
-# install asdf with plugins (see Makefile)
-$ make asdf-install
-# install dotfiles
-$ make dotfiles-install
-# install additional packages for some languages (see Makefile)
-$ make deps-all
-# nvim with old configuration (vimrc)
+# install oh-my-zh and asdf with plugins
+$ ./install.sh
+# install packages for Arch/Manjaro
+$ make prepare-os
+# install additional packages (see Makefile)
+$ make deps
+# nvim with old configuration (Plug)
 $ make nvim-install
 # nvim with new configuration (LazyVim)
 $ make lazyvim-install
@@ -43,7 +36,7 @@ $ make lazyvim-install
 
 * [Keymaps](https://www.lazyvim.org/keymaps)
 
-### VIM (Old configuration)
+### Vim (Old configuration)
 
 #### Main
 
@@ -92,7 +85,7 @@ $ make lazyvim-install
 
 #### Misc
 
-* `:checkhealth provider` - Nvim health check
+* `:checkhealth provider` - nvim health check
 * `:PlugUpdate` - update plugins
 * `:PlugClean | PlugUpdate` - cleanup and update plugins (if errors appear)
 * `:PlugUpgrade` - update Plug

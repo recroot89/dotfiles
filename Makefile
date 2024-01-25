@@ -1,9 +1,12 @@
-all: nvim-install dotfiles-install
+all:
+	./install.sh
+	nvim-install
+	deps
 
 TAGS := all
 
 prepare-os:
-	sudo pacman -S the_silver_searcher bat fd unzip xclip postgresql-lib ripgrep
+	sudo pacman -S fzf the_silver_searcher bat fd unzip xclip postgresql-lib ripgrep
 
 nvim-install:
 	ansible-playbook nvim.yml -i local -vvv -e curdir=$(CURDIR) -K
