@@ -4,12 +4,27 @@ return {
   -- If you'd rather extend the default config, use the code below instead:
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = { "RRethy/nvim-treesitter-endwise" },
     opts = function(_, opts)
-      -- add tsx and treesitter
-      vim.list_extend(opts.ensure_installed, {
+      opts.endwise = { enable = true }
+      opts.ensure_installed = {
+        "bash",
+        "embedded_template",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "ruby",
         "tsx",
         "typescript",
-      })
+        "vim",
+        "yaml",
+      }
     end,
   },
 }
