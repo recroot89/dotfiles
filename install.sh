@@ -17,3 +17,6 @@ asdf plugin add ruby
 asdf plugin add nodejs
 
 make asdf-install
+
+sudo pacman -S fzf the_silver_searcher bat fd unzip xclip postgresql-lib ripgrep
+sudo pacman -S zip

@@ -77,7 +77,7 @@ alias shsrv='systemctl list-units --type=service'
 # show all services
 alias srvall='systemctl list-unit-files --type=service'
 
-alias lla='ls -la'
+alias lla='ls -lah'
 alias ports='ss -lntu'
 alias startup_errors='journalctl -p err -b'
 alias previous_boot_errors='journalctl --boot=-1 --priority=3 --catalog --no-pager'

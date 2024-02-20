@@ -13,32 +13,26 @@
 ### Recommendations
 
 * [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh)
-* [Nerd Fonts](https://www.nerdfonts.com/) (fonts and icons for LazyVim)
+* [Nerd Fonts](https://www.nerdfonts.com/)
 
-### Setup configuration
+### Getting started
 
 ```sh
 $ git clone git@github.com:recroot89/dotfiles.git ~/dotfiles
 $ cd ~/dotfiles
-# install dotfiles, oh-my-zh and asdf with plugins
+# run script to install all requirements
 $ make install
-# install packages for Arch/Manjaro
-$ make prepare-os
-# install additional packages (see Makefile)
+# install language specific packages (see Makefile)
 $ make deps
-# nvim with old configuration (Plug)
-$ make nvim-install
-# nvim with new configuration (LazyVim)
 $ make lazyvim-install
 ```
 
-### LazyVim (New configuration)
+### LazyVim
 
-* [Keymaps](https://www.lazyvim.org/keymaps)
+* [Default keymaps](https://www.lazyvim.org/keymaps)
 
-### Vim (Old configuration)
 
-#### Main
+#### System
 
 * Switch `ctrl` and `caps lock`
 * Use <kbd>ctrl + [</kbd> instead of <kbd>esc</kdb>
@@ -49,20 +43,22 @@ $ make lazyvim-install
 * `<ctrl> l` - move right or open new right split
 * `<ctrl> k` - move up or open new top split
 * `<ctrl> j` - move down or open new bottom split
-* `<leader> b` - show buffer list
+* `<leader> be` - toggle buffer explorer
+* `<shift> h` - prev buffer
+* `<shift> l` - next buffer
 * `<ctrl> 6` - switch between two nearby buffers
 
 #### File Tree
 
-* `<leader><leader>` - toggle filetree
-* `<ctrl> n` - run NERDTreeFind
+* `<leader>e` - toggle neo-tree
 
-#### Searching
+#### Searching [Telescope default mappings](https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#default-mappings)
 
-* `<leader> o` - fuzzy search (files under git)
-* `<leader> ff` - fuzzy search (all files)
-* `<leader> fa` - fuzzy search (content in files)
-* `<leader> fc` - fuzzy search (git commits)
+* `<leader><leader>` - search files (git files)
+* `<ctrl><n/p>` - next/previous item in the search window (insert mode)
+* `<ctrl><j/k>` - next/previous item in the search window (normal mode)
+* `<ctrl><u>` - scroll up the item preview in the search window
+* `<ctrl><d>` - scroll down the item preview in the search window
 
 #### Code editing and navigation
 
@@ -77,18 +73,9 @@ $ make lazyvim-install
 * `<ctrl> n` – insert next matching word (multicursor)
 * `]g` and `[g` – go through linter errors
 * `"y` & `"p` – copy text to system clipboard
-* `]<leader>` and `[<leader>` – add empty line above and under cursor
-* `<leader> d` – coc diagnostic
 * `<leader> f` – format in visual mode (prettier)
 * `<leader> fr` – search & replace
 * `<leader> rn` – replace word under cursor in current file
 
 #### Misc
-
-* `:checkhealth provider` - nvim health check
-* `:PlugUpdate` - update plugins
-* `:PlugClean | PlugUpdate` - cleanup and update plugins (if errors appear)
-* `:PlugUpgrade` - update Plug
-* `:CocCommand java.updateLanguageServer` - coc-pyright
-* `<leader> gb` – Git blame
-* `<ctrl> p` – run Markdown preview
+* `<leader>l` - toggle lazy menu

@@ -2,9 +2,6 @@ all: install nvim-install deps
 
 TAGS := all
 
-prepare-os:
-	sudo pacman -S fzf the_silver_searcher bat fd unzip xclip postgresql-lib ripgrep
-
 dotfiles-install:
 	touch $(CURDIR)/files/my_aliases
 	ln -snf $(PWD)/files/aliases ~/.aliases

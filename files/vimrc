@@ -304,6 +304,7 @@ nnoremap <Leader>o :GFiles .<CR>
 nnoremap <leader>fc :Commits<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fa :Ag<CR>
+nnoremap <Leader>ga :A<CR>
 
 nnoremap <silent> <Leader>gb :Git blame<CR>
 " nnoremap <silent> <Leader>gs :Git status<CR>
