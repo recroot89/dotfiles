@@ -24,4 +24,14 @@ return {
   { "tree-sitter/tree-sitter-embedded-template" },
   { "RRethy/nvim-treesitter-endwise" },
   { "dyng/ctrlsf.vim" },
+  { "braxtons12/blame_line.nvim",
+    keys = {
+      { "<leader>gb", "<cmd>BlameLineToggle<cr>", desc = "Git Blame Toggle" },
+    },
+    config = function()
+      require("blame_line").setup()
+    end
+  },
+  { 'rktjmp/lush.nvim'},
+  { 'metalelf0/jellybeans-nvim' },
 }

@@ -20,6 +20,8 @@ return {
         "query",
         "regex",
         "ruby",
+        "hcl",
+        "terraform",
         "tsx",
         "typescript",
         "vim",
