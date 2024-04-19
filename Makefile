@@ -8,6 +8,7 @@ dotfiles-install:
 	ln -snf $(PWD)/files/my_aliases ~/.my_aliases
 	ln -snf $(PWD)/files/tmux.conf ~/.tmux.conf
 	ln -snf $(PWD)/files/zshrc ~/.zshrc
+	ln -snf $(PWD)/files/pryrc ~/.pryrc
 
 nvim-install:
 	mkdir -p ~/.config/nvim
@@ -30,6 +31,7 @@ deps-gem:
 	gem install sorbet sorbet-runtime
 	gem install haml_lint slim_lint erb_lint
 	gem install brakeman reek
+	gem install pry pry-theme awesome_print coderay
 
 deps-npm:
 	npm install -g neovim

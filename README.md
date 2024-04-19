@@ -79,3 +79,9 @@ $ make lazyvim-install
 
 #### Misc
 * `<leader>l` - toggle lazy menu
+
+To install useful keybindings and fuzzy completion:
+    $HOMEBREW_PREFIX/opt/fzf/install
+
+To use fzf in Vim, add the following line to your .vimrc:
+    set rtp+=$HOMEBREW_PREFIX/opt/fzf

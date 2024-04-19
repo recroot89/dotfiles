@@ -16,22 +16,22 @@ return {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-        require("nvim-surround").setup()
-    end
+      require("nvim-surround").setup()
+    end,
   },
   { "isobit/vim-caddyfile" },
   { "tpope/vim-rails" },
   { "tree-sitter/tree-sitter-embedded-template" },
   { "RRethy/nvim-treesitter-endwise" },
   { "dyng/ctrlsf.vim" },
-  { "braxtons12/blame_line.nvim",
-    keys = {
-      { "<leader>gb", "<cmd>BlameLineToggle<cr>", desc = "Git Blame Toggle" },
-    },
-    config = function()
-      require("blame_line").setup()
-    end
-  },
-  { 'rktjmp/lush.nvim'},
-  { 'metalelf0/jellybeans-nvim' },
+  -- { "braxtons12/blame_line.nvim",
+  --   keys = {
+  --     { "<leader>gb", "<cmd>BlameLineToggle<cr>", desc = "Git Blame Toggle" },
+  --   },
+  --   config = function()
+  --     require("blame_line").setup()
+  --   end
+  -- },
+  { "rktjmp/lush.nvim" },
+  { "metalelf0/jellybeans-nvim" },
 }
