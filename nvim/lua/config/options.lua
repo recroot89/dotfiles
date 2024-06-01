@@ -10,4 +10,4 @@ vim.o.spelllang = "ru_ru,en_us"
 vim.o.linebreak = true
 vim.g.autoformat = true
 
-require("lazyvim.util").get_root = vim.loop.cwd
+vim.g.root_spec = { "cwd" }

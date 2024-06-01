@@ -10,6 +10,7 @@ return {
         },
       },
       servers = {
+        ruby_lsp = {},
         ltex = {
           settings = {
             ltex = {

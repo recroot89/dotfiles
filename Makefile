@@ -32,6 +32,7 @@ deps-gem:
 	gem install haml_lint slim_lint erb_lint
 	gem install brakeman reek
 	gem install pry pry-theme awesome_print coderay
+	gem install test-prof
 
 deps-npm:
 	npm install -g neovim
@@ -54,6 +55,3 @@ asdf-install:
 	asdf global nodejs latest
 	asdf install ruby latest
 	asdf global ruby latest
-
-install:
-	./install.sh
