@@ -19,6 +19,11 @@ return {
       require("nvim-surround").setup()
     end,
   },
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+    config = true,
+  },
   { "isobit/vim-caddyfile" },
   { "tpope/vim-rails" },
   { "tree-sitter/tree-sitter-embedded-template" },

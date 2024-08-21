@@ -8,6 +8,7 @@ return {
         "shfmt",
         "flake8",
         "ruby-lsp",
+        "eslint-lsp",
       },
     },
   },

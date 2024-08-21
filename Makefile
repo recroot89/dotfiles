@@ -26,21 +26,23 @@ deps: deps-gem deps-npm
 
 deps-gem:
 	gem install neovim
-	gem install solargraph solargraph-rails
 	gem install rubocop rubocop-rspec rubocop-rails rubocop-performance rubocop-rake
-	gem install sorbet sorbet-runtime
-	gem install haml_lint slim_lint erb_lint
-	gem install brakeman reek
 	gem install pry pry-theme awesome_print coderay
 	gem install test-prof
+	# gem install brakeman reek
+	# gem install haml_lint slim_lint erb_lint
+	# gem install solargraph solargraph-rails
+	# gem install sorbet sorbet-runtime
 
 deps-npm:
 	npm install -g neovim
-	npm install -g prettier eslint eslint-plugin-import eslint-plugin-node
-	npx install-peerdeps -yg eslint-config-airbnb
-	npm install -g stylelint stylelint-config-recommended stylelint-config-standard
-	npm install -g yaml-language-server markuplint markdownlint-cli bash-language-server jsonlint
-	npm install -g dockerfile-language-server-nodejs
+	npm install -g eslint
+	npm install -g eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks
+	# npm install -g stylelint stylelint-config-recommended stylelint-config-standard
+	# npm install -g yaml-language-server markuplint markdownlint-cli bash-language-server jsonlint
+	# npm install -g prettier eslint eslint-plugin-import eslint-plugin-node
+	# npx install-peerdeps -yg eslint-config-airbnb
+	# npm install -g dockerfile-language-server-nodejs
 
 # deprecated for Manjaro/Arch
 deps-pip:
