@@ -18,19 +18,16 @@
 ### Getting started
 
 ```sh
-$ git clone git@github.com:recroot89/dotfiles.git ~/dotfiles
-$ cd ~/dotfiles
-# run script to install all requirements
-$ make install
-# install language specific packages (see Makefile)
-$ make deps
-$ make lazyvim-install
+git clone git@github.com:recroot89/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+make dotfiles-install
+make deps
+make lazyvim-install
 ```
 
 ### LazyVim
 
 * [Default keymaps](https://www.lazyvim.org/keymaps)
-
 
 #### System
 
@@ -78,6 +75,7 @@ $ make lazyvim-install
 * `<leader> rn` – replace word under cursor in current file
 
 #### Misc
+
 * `<leader>l` - toggle lazy menu
 
 To install useful keybindings and fuzzy completion:

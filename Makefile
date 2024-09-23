@@ -22,6 +22,8 @@ nvim-clean:
 lazyvim-install:
 	ln -snf $(PWD)/nvim ~/.config/nvim
 
+reinstall: nvim-clean lazyvim-install
+
 deps: deps-gem deps-npm
 
 deps-gem:
@@ -36,8 +38,8 @@ deps-gem:
 
 deps-npm:
 	npm install -g neovim
-	npm install -g eslint
-	npm install -g eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks
+	# npm install -g eslint
+	# npm install -g eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks
 	# npm install -g stylelint stylelint-config-recommended stylelint-config-standard
 	# npm install -g yaml-language-server markuplint markdownlint-cli bash-language-server jsonlint
 	# npm install -g prettier eslint eslint-plugin-import eslint-plugin-node
