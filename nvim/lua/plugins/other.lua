@@ -27,6 +27,7 @@ return {
   { "isobit/vim-caddyfile" },
   { "tpope/vim-rails" },
   { "tree-sitter/tree-sitter-embedded-template" },
+  { "nvim-treesitter/nvim-treesitter-context" },
   { "RRethy/nvim-treesitter-endwise" },
   { "dyng/ctrlsf.vim" },
   { "rktjmp/lush.nvim" },
