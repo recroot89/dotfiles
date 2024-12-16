@@ -26,6 +26,10 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "go",
+        "gomod",
+        "gowork",
+        "gosum",
       }
     end,
   },
