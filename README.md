@@ -52,10 +52,10 @@ make lazyvim-install
 #### Searching [Telescope default mappings](https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#default-mappings)
 
 * `<leader><leader>` - search files (git files)
-* `<ctrl><n/p>` - next/previous item in the search window (insert mode)
-* `<ctrl><j/k>` - next/previous item in the search window (normal mode)
-* `<ctrl><u>` - scroll up the item preview in the search window
-* `<ctrl><d>` - scroll down the item preview in the search window
+* `<ctrl><n/p>` - next/previous item in the search window
+* `<ctrl><j/k>` - next/previous item in the search window
+* `<ctrl><b>` - scroll up the item preview in the search window
+* `<ctrl><f>` - scroll down the item preview in the search window
 
 #### Code editing and navigation
 
