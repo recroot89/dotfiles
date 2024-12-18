@@ -9,5 +9,6 @@ vim.o.relativenumber = false
 vim.o.spelllang = "ru_ru,en_us"
 vim.o.linebreak = true
 vim.g.autoformat = true
+vim.g.snacks_animate = false
 
 vim.g.root_spec = { "cwd" }
