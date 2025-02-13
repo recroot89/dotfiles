@@ -24,6 +24,9 @@ lazyvim-install:
 
 reinstall: nvim-clean lazyvim-install
 
+setup-lazygit:
+	ln -snf $(PWD)/files/lazygit/config.yml ~/.config/lazygit/config.yml
+
 deps: deps-gem deps-npm
 
 deps-gem:
@@ -32,8 +35,6 @@ deps-gem:
 	gem install pry pry-theme awesome_print coderay
 	gem install test-prof
 	# gem install brakeman reek
-	# gem install haml_lint slim_lint erb_lint
-	# gem install solargraph solargraph-rails
 	# gem install sorbet sorbet-runtime
 
 deps-npm:

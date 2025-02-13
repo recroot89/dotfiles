@@ -11,4 +11,7 @@ vim.o.linebreak = true
 vim.g.autoformat = true
 vim.g.snacks_animate = false
 
+-- vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+-- vim.keymap.set("n", "<leader>Y", [["+Y]])
+
 vim.g.root_spec = { "cwd" }

@@ -22,5 +22,5 @@ asdf plugin add nodejs
 make asdf-install
 
 sudo pacman -S fzf the_silver_searcher bat fd postgresql-libs
-sudo pacman -S zip unzip xclip ripgrep
+sudo pacman -S zip unzip xclip ripgrep lazygit
 sudo pacman -S nmap

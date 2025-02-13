@@ -9,6 +9,7 @@ return {
         "flake8",
         "ruby-lsp",
         "eslint-lsp",
+        "vtsls",
       },
     },
   },
