@@ -486,8 +486,8 @@ keybinding:
     new: "n"
     edit: e
     openFile: o
-    scrollUpMain: <pgup>
-    scrollDownMain: <pgdown>
+    scrollUpMain: <c-k>
+    scrollDownMain: <c-j>
     scrollUpMain-alt1: K
     scrollDownMain-alt1: J
     scrollUpMain-alt2: <c-u>
@@ -571,8 +571,8 @@ keybinding:
     markCommitAsFixup: f
     createFixupCommit: F
     squashAboveCommits: S
-    moveDownCommit: <c-j>
-    moveUpCommit: <c-k>
+    moveDownCommit: <pgdown>
+    moveUpCommit: <pgup>
     amendToCommit: A
     resetCommitAuthor: a
     pickCommit: p
