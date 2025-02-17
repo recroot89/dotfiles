@@ -30,6 +30,4 @@ return {
   { "nvim-treesitter/nvim-treesitter-context" },
   { "RRethy/nvim-treesitter-endwise" },
   { "dyng/ctrlsf.vim" },
-  { "rktjmp/lush.nvim" },
-  { "metalelf0/jellybeans-nvim" },
 }

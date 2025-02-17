@@ -2,7 +2,15 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "jellybeans-nvim",
+      colorscheme = "catppuccin",
+    },
+  },
+  {
+    "catppuccin/nvim",
+    lazy = true,
+    name = "catppuccin",
+    opts = {
+      flavour = "mocha",
     },
   },
 }
