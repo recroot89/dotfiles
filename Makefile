@@ -34,6 +34,7 @@ deps-gem:
 	gem install rubocop rubocop-rspec rubocop-rails rubocop-performance rubocop-rake
 	gem install pry pry-theme awesome_print coderay
 	gem install test-prof
+	asdf exec gem install ruby-lsp
 	# gem install brakeman reek
 	# gem install sorbet sorbet-runtime
 
