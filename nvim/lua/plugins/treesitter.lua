@@ -20,6 +20,7 @@ return {
         "query",
         "regex",
         "ruby",
+        "clojure",
         "hcl",
         "terraform",
         "tsx",

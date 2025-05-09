@@ -15,6 +15,7 @@ return {
             client.server_capabilities.semanticTokensProvider = false
           end,
         },
+        clojure_lsp = {},
         ltex = {
           settings = {
             ltex = {

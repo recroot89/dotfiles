@@ -8,8 +8,9 @@ vim.o.langmap =
 vim.o.relativenumber = false
 vim.o.spelllang = "ru_ru,en_us"
 vim.o.linebreak = true
-vim.g.autoformat = true
+vim.g.autoformat = false
 vim.g.snacks_animate = false
+vim.g.maplocalleader = ","
 
 -- vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 -- vim.keymap.set("n", "<leader>Y", [["+Y]])

@@ -1,4 +1,8 @@
 .DS_Store
+.lsp
+.clj-kondo
+.nrepl-port
 
 files/my_aliases
 .tool-versions
+tmp/

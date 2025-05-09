@@ -9,6 +9,7 @@ dotfiles-install:
 	ln -snf $(PWD)/files/tmux.conf ~/.tmux.conf
 	ln -snf $(PWD)/files/zshrc ~/.zshrc
 	ln -snf $(PWD)/files/pryrc ~/.pryrc
+	ln -snf $(PWD)/files/deps.edn ~/.clojure/
 
 nvim-install:
 	mkdir -p ~/.config/nvim
@@ -34,9 +35,9 @@ deps-gem:
 	gem install rubocop rubocop-rspec rubocop-rails rubocop-performance rubocop-rake
 	gem install pry pry-theme awesome_print coderay
 	gem install test-prof
+	gem install brakeman reek
+	gem install sorbet sorbet-runtime
 	asdf exec gem install ruby-lsp
-	# gem install brakeman reek
-	# gem install sorbet sorbet-runtime
 
 deps-npm:
 	npm install -g neovim
@@ -59,7 +60,7 @@ asdf-install:
 	asdf plugin update --all
 	asdf install nodejs 18.20.2
 	asdf global nodejs 18.20.2
-	asdf install ruby 3.3.3
-	asdf global ruby 3.3.3
+	asdf install ruby 3.2.2
+	asdf global ruby 3.2.2
 	asdf install yarn 1.22.19
 	asdf global yarn 1.22.19

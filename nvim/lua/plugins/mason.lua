@@ -7,6 +7,7 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
+        "clojure-lsp",
         "ruby-lsp",
         "eslint-lsp",
         "vtsls",
