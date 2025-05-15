@@ -81,3 +81,7 @@ alias lla='ls -lah'
 alias ports='ss -lntu'
 alias startup_errors='journalctl -p err -b'
 alias previous_boot_errors='journalctl --boot=-1 --priority=3 --catalog --no-pager'
+
+#macbook
+alias macports='lsof -nP -iTCP -sTCP:LISTEN | column -t'
+alias macnetstat='netstat -anp tcp | grep LISTEN'

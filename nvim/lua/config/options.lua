@@ -12,6 +12,13 @@ vim.g.autoformat = false
 vim.g.snacks_animate = false
 vim.g.maplocalleader = ","
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.b.autoformat = true
+  end,
+})
+
 -- vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 -- vim.keymap.set("n", "<leader>Y", [["+Y]])
 
