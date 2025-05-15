@@ -1,7 +1,3 @@
-all: install nvim-install deps
-
-TAGS := all
-
 dotfiles-install:
 	touch $(CURDIR)/files/my_aliases
 	ln -snf $(PWD)/files/aliases ~/.aliases
@@ -11,11 +7,6 @@ dotfiles-install:
 	ln -snf $(PWD)/files/pryrc ~/.pryrc
 	ln -snf $(PWD)/files/deps.edn ~/.clojure/
 
-nvim-install:
-	mkdir -p ~/.config/nvim
-	ln -snf $(PWD)/files/vimrc ~/.config/nvim/init.vim
-	ln -snf $(PWD)/files/coc-settings.json ~/.config/nvim/coc-settings.json
-
 nvim-clean:
 	rm -rf ~/.local/share/nvim || exit 0
 	rm -rf ~/.config/nvim || exit 0
@@ -23,31 +14,56 @@ nvim-clean:
 lazyvim-install:
 	ln -snf $(PWD)/nvim ~/.config/nvim
 
-reinstall: nvim-clean lazyvim-install
+nvim-setup: nvim-clean lazyvim-install
 
 setup-lazygit:
-	ln -snf $(PWD)/files/lazygit/config.yml ~/.config/lazygit/config.yml
+	@if [ "$$(uname)" = "Linux" ]; then \
+		ln -snf $(PWD)/files/lazygit_config.yml $$HOME/.config/lazygit/config.yml; \
+	elif [ "$$(uname)" = "Darwin" ]; then \
+		ln -snf $(PWD)/files/lazygit_config.yml "$$HOME/Library/Application Support/lazygit/config.yml"; \
+	else \
+		echo "Unsupported OS: $$(uname)"; \
+	fi
 
-deps: deps-gem deps-npm
+asdf-install:
+	asdf update
+	asdf plugin update --all
+	asdf install nodejs 22.14.0
+	asdf set nodejs 22.14.0
+	asdf install ruby 3.2.2
+	asdf set ruby 3.2.2
+	asdf install yarn 1.22.19
+	asdf set yarn 1.22.19
+
 
 deps-gem:
 	gem install neovim
-	gem install rubocop rubocop-rspec rubocop-rails rubocop-performance rubocop-rake
+	# RuboCop and extensions
+	gem install rubocop rubocop-rspec rubocop-rails rubocop-performance
+	gem install rubocop-rake rubocop-minitest
+	# Interactivity
 	gem install pry pry-theme awesome_print coderay
+	# Testing and profiling
 	gem install test-prof
+	# Code analysis
 	gem install brakeman reek
-	gem install sorbet sorbet-runtime
+	# LSP + types
+	gem install sorbet sorbet-runtime ruby-lsp
 	asdf exec gem install ruby-lsp
 
 deps-npm:
-	npm install -g neovim
-	npm install -g eslint
-	npm install -g eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks
-	npm install -g stylelint stylelint-config-recommended stylelint-config-standard
-	npm install -g yaml-language-server markuplint markdownlint-cli bash-language-server jsonlint
-	# npm install -g prettier eslint eslint-plugin-import eslint-plugin-node
-	# npx install-peerdeps -yg eslint-config-airbnb
-	# npm install -g dockerfile-language-server-nodejs
+	yarn global add neovim
+	# Eslint and plugins
+	yarn global add eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y
+	yarn global add eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-promise eslint-config-prettier
+	yarn global add eslint-plugin-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser prettier
+	# Stylelint
+	yarn global add stylelint stylelint-config-recommended stylelint-config-standard markuplint
+	# LSP and utilities
+	yarn global add typescript typescript-language-server yaml-language-server bash-language-server
+	yarn global add vscode-langservers-extracted jsonlint markdownlint-cli
+
+deps: deps-gem deps-npm
 
 # deprecated for Manjaro/Arch
 deps-pip:
@@ -55,12 +71,7 @@ deps-pip:
 	pip3 install --upgrade vim-vint spellcheck yamllint codespell ansible-lint
 	pip3 install --upgrade autopep8 flake8 bandit pytype
 
-asdf-install:
-	asdf update
-	asdf plugin update --all
-	asdf install nodejs 18.20.2
-	asdf global nodejs 18.20.2
-	asdf install ruby 3.2.2
-	asdf global ruby 3.2.2
-	asdf install yarn 1.22.19
-	asdf global yarn 1.22.19
+old-nvim-install:
+	mkdir -p ~/.config/nvim
+	ln -snf $(PWD)/files/vimrc ~/.config/nvim/init.vim
+	ln -snf $(PWD)/files/coc-settings.json ~/.config/nvim/coc-settings.json
