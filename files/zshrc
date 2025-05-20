@@ -17,15 +17,6 @@ elif [ -f "$HOME/.asdf/asdf.sh" ]; then
   . "$HOME/.asdf/asdf.sh"
 fi
 
-# fzf (Fuzzy finder)
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  [ -r "/opt/homebrew/opt/fzf/shell/key-bindings.zsh" ] && source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
-  [ -r "/opt/homebrew/opt/fzf/shell/completion.zsh" ] && source "/opt/homebrew/opt/fzf/shell/completion.zsh"
-else
-  [ -r "/usr/share/fzf/key-bindings.zsh" ] && source "/usr/share/fzf/key-bindings.zsh"
-  [ -r "/usr/share/fzf/completion.zsh" ] && source "/usr/share/fzf/completion.zsh"
-fi
-
 # oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
@@ -45,3 +36,13 @@ HYPHEN_INSENSITIVE="true"
 
 # Uncomment to show completion dots (optional)
 # COMPLETION_WAITING_DOTS="true"
+
+# fzf (Fuzzy finder)
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  [ -r "/opt/homebrew/opt/fzf/shell/key-bindings.zsh" ] && source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+  [ -r "/opt/homebrew/opt/fzf/shell/completion.zsh" ] && source "/opt/homebrew/opt/fzf/shell/completion.zsh"
+else
+  [ -r "/usr/share/fzf/key-bindings.zsh" ] && source "/usr/share/fzf/key-bindings.zsh"
+  [ -r "/usr/share/fzf/completion.zsh" ] && source "/usr/share/fzf/completion.zsh"
+fi
+
