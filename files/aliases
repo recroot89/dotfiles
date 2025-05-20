@@ -77,11 +77,12 @@ alias shsrv='systemctl list-units --type=service'
 # show all services
 alias srvall='systemctl list-unit-files --type=service'
 
+# linux
 alias lla='ls -lah'
 alias ports='ss -lntu'
 alias startup_errors='journalctl -p err -b'
 alias previous_boot_errors='journalctl --boot=-1 --priority=3 --catalog --no-pager'
 
-#macbook
+# macbook
 alias macports='lsof -nP -iTCP -sTCP:LISTEN | column -t'
 alias macnetstat='netstat -anp tcp | grep LISTEN'
