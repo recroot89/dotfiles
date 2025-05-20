@@ -8,7 +8,7 @@ return {
     throttle = 1500, -- minimum time between consecutive requests (ms)
     openai = {
       endpoint = "https://api.openai.com/v1",
-      model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+      model = "gpt-o4-mini", -- your desired model (or use gpt-4o, etc.)
       timeout = 45000, -- Timeout in milliseconds, increase this for reasoning models
       temperature = 0.3, -- balance between creativity and consistency
       max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
