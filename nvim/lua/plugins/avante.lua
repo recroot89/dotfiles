@@ -3,12 +3,15 @@ return {
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   opts = {
+    mappings = {
+      ask = "<leader>ag",
+    },
     provider = "openai",
     debounce = 800, -- delay before sending input after idle (ms)
     throttle = 1500, -- minimum time between consecutive requests (ms)
     openai = {
       endpoint = "https://api.openai.com/v1",
-      model = "gpt-o4-mini", -- your desired model (or use gpt-4o, etc.)
+      model = "o4-mini", -- your desired model (or use gpt-4o, etc.)
       timeout = 45000, -- Timeout in milliseconds, increase this for reasoning models
       temperature = 0.3, -- balance between creativity and consistency
       max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
