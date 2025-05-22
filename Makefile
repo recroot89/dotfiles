@@ -51,7 +51,7 @@ deps-gem:
 	gem install sorbet sorbet-runtime ruby-lsp
 	asdf exec gem install ruby-lsp
 
-deps-npm:
+deps-yarn:
 	yarn global add neovim
 	# Eslint and plugins
 	yarn global add eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y
@@ -63,13 +63,18 @@ deps-npm:
 	yarn global add typescript typescript-language-server yaml-language-server bash-language-server
 	yarn global add vscode-langservers-extracted jsonlint markdownlint-cli
 
-deps: deps-gem deps-npm
+deps: deps-gem deps-yarn
 
 # deprecated for Manjaro/Arch
 deps-pip:
 	pip3 install --upgrade pynvim
 	pip3 install --upgrade vim-vint spellcheck yamllint codespell ansible-lint
 	pip3 install --upgrade autopep8 flake8 bandit pytype
+
+bat-catppuccin:
+	mkdir -p ~/.config/bat/themes \
+	&& git clone https://github.com/catppuccin/bat ~/.config/bat/themes/catppuccin \
+	&& bat cache --build
 
 old-nvim-install:
 	mkdir -p ~/.config/nvim

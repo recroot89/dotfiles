@@ -16,7 +16,7 @@ return {
           ["--info"] = "inline",
         },
         grep = {
-          cmd = "rg --vimgrep --smart-case",
+          cmd = "rg --vimgrep --smart-case --column --line-number",
           input_prompt = "Grep > ",
           actions = {
             ["default"] = require("fzf-lua.actions").file_edit,

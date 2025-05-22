@@ -1,7 +1,8 @@
 ## Requirements
 
-* [Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 * [Zsh](https://wiki.archlinux.org/title/zsh)
+* [Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+* [asdf](https://github.com/asdf-vm/asdf)
 
 ### Global install
 
@@ -21,13 +22,15 @@
 git clone git@github.com:recroot89/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 make dotfiles-install
+make nvim-setup
+make setup-lazygit
+make asdf-install
 make deps
-make lazyvim-install
+make bat-catppuccin
 ```
 
-### LazyVim
-
-* [Default keymaps](https://www.lazyvim.org/keymaps)
+* [Lazyvim default keymaps](https://www.lazyvim.org/keymaps)
+* [Git aliases](https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index)
 
 #### System
 
@@ -45,10 +48,6 @@ make lazyvim-install
 * `<shift> l` - next buffer
 * `<ctrl> 6` - switch between two nearby buffers
 
-#### File Tree
-
-* `<leader>e` - toggle neo-tree
-
 #### Searching [Telescope default mappings](https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#default-mappings)
 
 * `<leader><leader>` - search files (git files)
@@ -60,23 +59,15 @@ make lazyvim-install
 #### Code editing and navigation
 
 * `gcc` - toggle commenting
-* `gj` - navigate through blocks of code - (), {}, [], etс
-* `gf` - open a file corresponding to a word under the cursor
 * `gd` - go to definition
 * `]с` and `[с` - go through linter errors
 * `g;` – go to the last edited line in the current opened buffer
 * `gS` – convert oneline expression to multiline (useful for functions, arguments, data structures)
 * `gv` – reselect last visual selection
 * `<ctrl> n` – insert next matching word (multicursor)
-* `]g` and `[g` – go through linter errors
-* `"y` & `"p` – copy text to system clipboard
 * `<leader> f` – format in visual mode (prettier)
 * `<leader> fr` – search & replace
 * `<leader> rn` – replace word under cursor in current file
-
-#### Misc
-
-* `<leader>l` - toggle lazy menu
 
 To install useful keybindings and fuzzy completion:
     $HOMEBREW_PREFIX/opt/fzf/install
