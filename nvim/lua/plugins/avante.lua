@@ -3,23 +3,16 @@ return {
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   opts = {
-    mappings = {
-      ask = "<leader>ag",
+    provider = "copilot",
+    cursor_applying_provider = "copilot",
+    behaviour = {
+      enable_cursor_planning_mode = true, -- enable cursor planning mode!
     },
-    provider = "openai",
+    copilot = {
+      model = "claude-sonnet-4",
+    },
     debounce = 800, -- delay before sending input after idle (ms)
     throttle = 1500, -- minimum time between consecutive requests (ms)
-    openai = {
-      endpoint = "https://api.openai.com/v1",
-      model = "o4-mini", -- your desired model (or use gpt-4o, etc.)
-      timeout = 45000, -- Timeout in milliseconds, increase this for reasoning models
-      temperature = 0.3, -- balance between creativity and consistency
-      max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-      top_p = 1,
-      frequency_penalty = 0,
-      presence_penalty = 0,
-      --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-    },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
