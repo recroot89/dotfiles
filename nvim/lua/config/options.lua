@@ -19,7 +19,4 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
--- vim.keymap.set("n", "<leader>Y", [["+Y]])
-
 vim.g.root_spec = { "cwd" }

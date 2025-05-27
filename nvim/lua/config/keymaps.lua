@@ -18,3 +18,6 @@ end)
 
 bind("n", "<leader>[", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>")
 bind("n", "<leader>]", "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>")
+
+-- vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+-- vim.keymap.set("n", "<leader>Y", [["+Y]])
