@@ -4,12 +4,13 @@ return {
   version = false, -- Never set this value to "*"! Never!
   opts = {
     provider = "copilot",
-    cursor_applying_provider = "copilot",
     behaviour = {
       enable_cursor_planning_mode = true, -- enable cursor planning mode!
     },
-    copilot = {
-      model = "claude-sonnet-4",
+    providers = {
+      copilot = {
+        model = "claude-sonnet-4",
+      },
     },
     debounce = 800, -- delay before sending input after idle (ms)
     throttle = 1500, -- minimum time between consecutive requests (ms)

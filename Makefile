@@ -32,8 +32,8 @@ asdf-install:
 	asdf set nodejs 22.14.0
 	asdf install ruby 3.2.2
 	asdf set ruby 3.2.2
-	asdf install yarn 1.22.19
-	asdf set yarn 1.22.19
+	asdf install yarn 1.22.22
+	asdf set yarn 1.22.22
 
 
 deps-gem:
