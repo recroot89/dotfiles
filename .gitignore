@@ -4,5 +4,6 @@
 .nrepl-port
 
 files/my_aliases
+files/mcp
 .tool-versions
 tmp/

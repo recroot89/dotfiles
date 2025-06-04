@@ -29,12 +29,13 @@ install_packages() {
         echo "Installing packages with Homebrew..."
         brew install fzf the_silver_searcher bat fd postgresql ripgrep lazygit nmap asdf
         brew install --cask xquartz  # For X11 clipboard support alternative
+        brew install derailed/k9s/k9s
         
     elif [[ "$MACHINE" == "Linux" ]]; then
         # Detect if it's Arch Linux
         if command -v pacman &> /dev/null; then
             echo "Installing packages with pacman..."
-            sudo pacman -S --needed fzf the_silver_searcher bat fd postgresql-libs zip unzip xclip ripgrep lazygit nmap asdf-vm
+            sudo pacman -S --needed fzf the_silver_searcher bat fd postgresql-libs zip unzip xclip ripgrep lazygit nmap asdf-vm k9s
         else
             echo "Error: This script currently only supports Arch Linux for Linux distributions"
             exit 1

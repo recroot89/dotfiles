@@ -16,6 +16,10 @@ lazyvim-install:
 
 nvim-setup: nvim-clean lazyvim-install
 
+setup-mcp:
+	ln -snf $(PWD)/files/mcp/mcpservers.json ~/.config/mcphub/servers.json
+	ln -snf $(PWD)/files/mcp/rails_mcp_projects.yml ~/.config/rails-mcp/projects.yml
+
 setup-lazygit:
 	@if [ "$$(uname)" = "Linux" ]; then \
 		ln -snf $(PWD)/files/lazygit_config.yml $$HOME/.config/lazygit/config.yml; \

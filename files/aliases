@@ -8,16 +8,6 @@ alias gbrm='git branch | grep -v "main" | xargs git branch -D'
 alias gbrd='git branch | grep -v "develop" | xargs git branch -D'
 alias ghist='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 
-alias irbs='irb --simple-prompt'
-
-# ruby on rails
-alias rr='bin/rails routes'
-alias rrg='bin/rails routes | grep'
-alias rdbm='bin/rails db:migrate RAILS_ENV=development'
-alias rdbr='bin/rails db:drop db:create db:migrate db:seed'
-alias bi='bundle install --jobs 20 --retry 5'
-alias bu='bundle update --jobs 20 --retry 5'
-
 # docker
 alias dps='docker ps'
 alias drit='docker run -it'
@@ -39,6 +29,20 @@ alias dcu='docker-compose up'
 alias dcd='docker-compose down'
 alias dcr='docker-compose restart'
 alias dcs='docker-compose stop'
+
+# k9s
+alias kdev="k9s --context duplo-tenant-devx"
+alias kprod="k9s --context duplo-tenant-prod"
+alias kstag="k9s --context duplo-tenant-staging"
+
+# ruby on rails
+alias irbs='irb --simple-prompt'
+alias rr='bin/rails routes'
+alias rrg='bin/rails routes | grep'
+alias rdbm='bin/rails db:migrate RAILS_ENV=development'
+alias rdbr='bin/rails db:drop db:create db:migrate db:seed'
+alias bi='bundle install --jobs 20 --retry 5'
+alias bu='bundle update --jobs 20 --retry 5'
 
 # elixir phoenix
 alias ips='iex -S mix phx.server'

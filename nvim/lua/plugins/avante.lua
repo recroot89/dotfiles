@@ -14,6 +14,24 @@ return {
     },
     debounce = 800, -- delay before sending input after idle (ms)
     throttle = 1500, -- minimum time between consecutive requests (ms)
+    system_prompt = function()
+      local ok, mcphub = pcall(require, "mcphub")
+      if not ok then
+        return ""
+      end
+      local hub = mcphub.get_hub_instance()
+      return hub and hub:get_active_servers_prompt() or ""
+    end,
+
+    custom_tools = function()
+      local ok, mcphub = pcall(require, "mcphub")
+      if not ok then
+        return {}
+      end
+      return {
+        require("mcphub.extensions.avante").mcp_tool(),
+      }
+    end,
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
@@ -49,7 +67,7 @@ return {
     },
     {
       -- Make sure to set this up properly if you have lazy=true
-      'MeanderingProgrammer/render-markdown.nvim',
+      "MeanderingProgrammer/render-markdown.nvim",
       opts = {
         file_types = { "markdown", "Avante" },
       },
