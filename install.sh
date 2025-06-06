@@ -28,7 +28,6 @@ install_packages() {
         
         echo "Installing packages with Homebrew..."
         brew install fzf the_silver_searcher bat fd postgresql ripgrep lazygit nmap asdf
-        brew install --cask xquartz  # For X11 clipboard support alternative
         brew install derailed/k9s/k9s
         
     elif [[ "$MACHINE" == "Linux" ]]; then

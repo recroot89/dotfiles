@@ -1,5 +1,5 @@
 dotfiles-install:
-	touch $(CURDIR)/files/my_aliases
+	touch $(PWD)/files/my_aliases
 	ln -snf $(PWD)/files/aliases ~/.aliases
 	ln -snf $(PWD)/files/my_aliases ~/.my_aliases
 	ln -snf $(PWD)/files/zshrc ~/.zshrc
