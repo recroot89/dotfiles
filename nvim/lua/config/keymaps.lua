@@ -12,14 +12,7 @@ bind("n", "л", "gk", opts)
 bind("i", "<C-г>", "<C-G>u<C-U>", opts)
 bind("i", "<C-ц>", "<C-G>u<C-W>", opts)
 
-bind("n", "[c", function()
-  require("treesitter-context").go_to_context()
-end)
-
 bind("n", "<leader>[", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Insert line above" })
 bind("n", "<leader>]", "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>", { desc = "Insert line below" })
-bind("n", "<leader>m", "<cmd>MCPHub<CR>", { desc = "Open MCP Hub" })
 
--- for blink-cmp (check if useful)
--- bind({ "n", "v" }, "<leader>y", [["+y]])
--- bind("n", "<leader>Y", [["+Y]])
+bind("n", "<leader>m", "<cmd>MCPHub<CR>", { desc = "Open MCP Hub" })
