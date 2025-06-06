@@ -2,7 +2,6 @@ dotfiles-install:
 	touch $(CURDIR)/files/my_aliases
 	ln -snf $(PWD)/files/aliases ~/.aliases
 	ln -snf $(PWD)/files/my_aliases ~/.my_aliases
-	ln -snf $(PWD)/files/tmux.conf ~/.tmux.conf
 	ln -snf $(PWD)/files/zshrc ~/.zshrc
 	ln -snf $(PWD)/files/pryrc ~/.pryrc
 	ln -snf $(PWD)/files/deps.edn ~/.clojure/
