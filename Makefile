@@ -11,7 +11,7 @@ nvim-clean:
 	rm -rf ~/.config/nvim || exit 0
 
 lazyvim-install:
-	ln -snf $(PWD)/nvim ~/.config/nvim
+	ln -snf $(PWD)/nvim ~/.config/
 
 nvim-setup: nvim-clean lazyvim-install
 
@@ -29,8 +29,9 @@ setup-lazygit:
 	fi
 
 asdf-install:
-	asdf update
-	asdf plugin update --all
+	asdf plugin add nodejs
+	asdf plugin add ruby
+	asdf plugin add yarn
 	asdf install nodejs 22.14.0
 	asdf set nodejs 22.14.0
 	asdf install ruby 3.2.2
@@ -68,11 +69,10 @@ deps-yarn:
 
 deps: deps-gem deps-yarn
 
-# deprecated for Manjaro/Arch
 deps-pip:
-	pip3 install --upgrade pynvim
-	pip3 install --upgrade vim-vint spellcheck yamllint codespell ansible-lint
-	pip3 install --upgrade autopep8 flake8 bandit pytype
+	python -m venv .venv
+	.venv/bin/pip install --upgrade pip
+	.venv/bin/pip install pynvim vim-vint spellcheck yamllint codespell ansible-lint autopep8 flake8 bandit pytype
 
 bat-catppuccin:
 	mkdir -p ~/.config/bat/themes \
