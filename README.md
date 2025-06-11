@@ -2,7 +2,6 @@
 
 * [Zsh](https://wiki.archlinux.org/title/zsh)
 * [Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
-* [asdf](https://github.com/asdf-vm/asdf)
 
 ### Global install
 
@@ -15,6 +14,15 @@
 
 * [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh)
 * [Nerd Fonts](https://www.nerdfonts.com/)
+* [asdf](https://github.com/asdf-vm/asdf)
+
+### Useful links
+
+* [Git Oh-My-Zsh aliases](https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index)
+* [Lazyvim default keymaps](https://www.lazyvim.org/keymaps)
+* [Telescope default mappings](https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#default-mappings)
+
+---
 
 ### Getting started
 
@@ -24,13 +32,15 @@ cd ~/dotfiles
 make dotfiles-install
 make nvim-setup
 make setup-lazygit
+make setup-mcp
 make asdf-install
 make deps
 make bat-catppuccin
 ```
 
-* [Lazyvim default keymaps](https://www.lazyvim.org/keymaps)
-* [Git aliases](https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index)
+---
+
+### Keybindings
 
 #### System
 
@@ -48,7 +58,7 @@ make bat-catppuccin
 * `<shift> l` - next buffer
 * `<ctrl> 6` - switch between two nearby buffers
 
-#### Searching [Telescope default mappings](https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#default-mappings)
+#### Searching
 
 * `<leader><leader>` - search files (git files)
 * `<ctrl><n/p>` - next/previous item in the search window
@@ -69,8 +79,16 @@ make bat-catppuccin
 * `<leader> fr` – search & replace
 * `<leader> rn` – replace word under cursor in current file
 
+---
+
 To install useful keybindings and fuzzy completion:
-    $HOMEBREW_PREFIX/opt/fzf/install
+
+```sh
+$HOMEBREW_PREFIX/opt/fzf/install
+```
 
 To use fzf in Vim, add the following line to your .vimrc:
-    set rtp+=$HOMEBREW_PREFIX/opt/fzf
+
+```sh
+set rtp+=$HOMEBREW_PREFIX/opt/fzf
+```

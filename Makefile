@@ -11,7 +11,7 @@ nvim-clean:
 	rm -rf ~/.config/nvim || exit 0
 
 lazyvim-install:
-	ln -snf $(PWD)/nvim ~/.config/
+	mkdir -p ~/.config && ln -snf $(PWD)/nvim ~/.config/
 
 nvim-setup: nvim-clean lazyvim-install
 
@@ -31,14 +31,10 @@ setup-lazygit:
 asdf-install:
 	asdf plugin add nodejs
 	asdf plugin add ruby
-	asdf plugin add yarn
 	asdf install nodejs 22.14.0
 	asdf set nodejs 22.14.0
 	asdf install ruby 3.2.2
 	asdf set ruby 3.2.2
-	asdf install yarn 1.22.22
-	asdf set yarn 1.22.22
-
 
 deps-gem:
 	gem install neovim
@@ -67,12 +63,21 @@ deps-yarn:
 	yarn global add typescript typescript-language-server yaml-language-server bash-language-server
 	yarn global add vscode-langservers-extracted jsonlint markdownlint-cli
 
-deps: deps-gem deps-yarn
-
 deps-pip:
 	python -m venv .venv
 	.venv/bin/pip install --upgrade pip
-	.venv/bin/pip install pynvim vim-vint spellcheck yamllint codespell ansible-lint autopep8 flake8 bandit pytype
+	# Neovim integration
+	.venv/bin/pip install pynvim
+	# Linting and formatting
+	.venv/bin/pip install vim-vint yamllint codespell autopep8 flake8
+	# Security and type checking
+	.venv/bin/pip install bandit pytype
+	# Spell checking
+	.venv/bin/pip install spellcheck
+	# Infrastructure as code
+	.venv/bin/pip install ansible-lint
+
+deps: deps-gem deps-yarn deps-pip
 
 bat-catppuccin:
 	mkdir -p ~/.config/bat/themes \
