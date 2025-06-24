@@ -51,31 +51,24 @@ deps-gem:
 	gem install sorbet sorbet-runtime ruby-lsp
 	asdf exec gem install ruby-lsp
 
-deps-yarn:
-	yarn global add neovim
+deps-npm:
+	npm install -g neovim
 	# Eslint and plugins
-	yarn global add eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y
-	yarn global add eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-promise eslint-config-prettier
-	yarn global add eslint-plugin-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser prettier
-	# Stylelint
-	yarn global add stylelint stylelint-config-recommended stylelint-config-standard markuplint
+	npm install -g eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y
+	npm install -g eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-promise eslint-config-prettier
+	npm install -g eslint-plugin-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser prettier
+	npm install -g stylelint stylelint-config-recommended stylelint-config-standard markuplint
 	# LSP and utilities
-	yarn global add typescript typescript-language-server yaml-language-server bash-language-server
-	yarn global add vscode-langservers-extracted jsonlint markdownlint-cli
+	npm install -g typescript typescript-language-server yaml-language-server bash-language-server
+	npm install -g vscode-langservers-extracted jsonlint markdownlint-cli
+	npm install -g mcp-hub
 
 deps-pip:
 	python -m venv .venv
 	.venv/bin/pip install --upgrade pip
-	# Neovim integration
 	.venv/bin/pip install pynvim
-	# Linting and formatting
 	.venv/bin/pip install vim-vint yamllint codespell autopep8 flake8
-	# Security and type checking
-	.venv/bin/pip install bandit pytype
-	# Spell checking
-	.venv/bin/pip install spellcheck
-	# Infrastructure as code
-	.venv/bin/pip install ansible-lint
+	.venv/bin/pip install bandit pytype spellcheck ansible-lint
 
 deps: deps-gem deps-yarn deps-pip
 
