@@ -4,6 +4,6 @@
 .nrepl-port
 
 files/my_aliases
-files/mcp
+files/mcp/rails_mcp_projects.yml
 .tool-versions
 tmp/

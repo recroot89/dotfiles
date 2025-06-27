@@ -1,0 +1,23 @@
+{
+  "nativeMCPServers": [],
+  "mcpServers": {
+    "rails": {
+      "disabled": false,
+      "args": [
+        "--mode http"
+      ],
+      "command": "rails-mcp-server",
+      "env": {
+        "RAILS_ENV": "development"
+      },
+      "disabled_tools": []
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ]
+    }
+  }
+}
