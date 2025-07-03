@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "rails": {
+      "type": "local",
+      "command": ["/Users/recroot/Projects/mcp-server/exe/mcp-server", "--mode http"],
+      "enabled": true,
+      "environment": {
+        "RAILS_ENV": "development"
+      }
+    },
+    "context7": {
+      "type": "local",
+      "command": ["npx", "-y", "@upstash/context7-mcp"],
+      "enabled": true,
+      "environment": {
+        "DEFAULT_MINIMUM_TOKENS": "6000"
+      }
+    }
+  }
+}

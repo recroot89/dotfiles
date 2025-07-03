@@ -5,5 +5,6 @@
 
 files/my_aliases
 files/mcp/rails_mcp_projects.yml
-.tool-versions
+files/.cpcache
+
 tmp/

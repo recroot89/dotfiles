@@ -1,23 +1,27 @@
 {
-  "nativeMCPServers": [],
+  "nativeMCPServers": [
+    
+  ],
   "mcpServers": {
-    "rails": {
-      "disabled": false,
-      "args": [
-        "--mode http"
-      ],
-      "command": "rails-mcp-server",
-      "env": {
-        "RAILS_ENV": "development"
-      },
-      "disabled_tools": []
-    },
     "context7": {
       "command": "npx",
       "args": [
         "-y",
         "@upstash/context7-mcp"
       ]
+    },
+    "rails": {
+      "disabled_tools": [
+        
+      ],
+      "args": [
+        "--mode http"
+      ],
+      "command": "/Users/recroot/Projects/mcp-server/exe/mcp-server",
+      "disabled": false,
+      "env": {
+        "RAILS_ENV": "development"
+      }
     }
   }
 }
