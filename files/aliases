@@ -77,6 +77,7 @@ alias previous_boot_errors='journalctl --boot=-1 --priority=3 --catalog --no-pag
 # macbook
 alias macports='lsof -nP -iTCP -sTCP:LISTEN | column -t'
 alias macnetstat='netstat -anp tcp | grep LISTEN'
+alias showdns='scutil --dns | grep "nameserver\[[0-9]*\]"'
 
 # misc
 
