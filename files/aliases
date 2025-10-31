@@ -31,9 +31,9 @@ alias dcr='docker-compose restart'
 alias dcs='docker-compose stop'
 
 # k9s
-alias kdev="k9s --context duplo-tenant-devx"
-alias kprod="k9s --context duplo-tenant-prod"
-alias kstag="k9s --context duplo-tenant-staging"
+alias kdev="k9s --context showmojo-dev"
+alias kstag="k9s --context showmojo-staging"
+alias kprod="k9s --context showmojo-prod"
 
 # ruby on rails
 alias irbs='irb --simple-prompt'

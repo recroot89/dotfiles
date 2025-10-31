@@ -9,7 +9,7 @@ return {
     },
     providers = {
       copilot = {
-        model = "claude-sonnet-4",
+        model = "claude-sonnet-4.5",
       },
     },
     debounce = 800, -- delay before sending input after idle (ms)

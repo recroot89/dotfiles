@@ -3,3 +3,5 @@ showmojo:
   docs: ~/Projects/showmojo-docs/docs/dev_docs/project_docs
 store:
   project: "~/Projects/store-rails/"
+showmojo-docs:
+  project: ~/Projects/showmojo-docs

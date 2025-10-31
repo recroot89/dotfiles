@@ -11,6 +11,13 @@ return {
       },
       servers = {
         ruby_lsp = {
+          init_options = {
+            addonSettings = {
+              ["Ruby LSP Rails"] = {
+                enablePendingMigrationsPrompt = false,
+              },
+            },
+          },
           on_attach = function(client, bufnr)
             client.server_capabilities.semanticTokensProvider = false
           end,
@@ -66,19 +73,20 @@ return {
         gopls = function(_, opts)
           -- workaround for gopls not supporting semanticTokensProvider
           -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
-          LazyVim.lsp.on_attach(function(client, _)
+          Snacks.util.lsp.on({ name = "gopls" }, function(client, _)
             if not client.server_capabilities.semanticTokensProvider then
-              local semantic = client.config.capabilities.textDocument.semanticTokens
+              local caps = (client.config.capabilities or {})
+              local semantic = ((caps.textDocument or {}).semanticTokens or {})
               client.server_capabilities.semanticTokensProvider = {
                 full = true,
                 legend = {
-                  tokenTypes = semantic.tokenTypes,
-                  tokenModifiers = semantic.tokenModifiers,
+                  tokenTypes = semantic.tokenTypes or {},
+                  tokenModifiers = semantic.tokenModifiers or {},
                 },
                 range = true,
               }
             end
-          end, "gopls")
+          end)
           -- end workaround
         end,
       },
