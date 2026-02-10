@@ -30,4 +30,13 @@ return {
   { "nvim-treesitter/nvim-treesitter-context" },
   { "RRethy/nvim-treesitter-endwise" },
   { "dyng/ctrlsf.vim" },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {
+      code = {
+        enabled = false,
+        -- sign = true,
+      },
+    },
+  },
 }

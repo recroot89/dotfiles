@@ -7,8 +7,10 @@ dotfiles-install:
 	ln -snf $(PWD)/files/deps.edn ~/.clojure/
 
 nvim-clean:
-	rm -rf ~/.local/share/nvim || exit 0
-	rm -rf ~/.config/nvim || exit 0
+	rm -rf ~/.config/nvim
+	rm -rf ~/.local/share/nvim
+	rm -rf ~/.local/state/nvim
+	rm -rf ~/.cache/nvim
 
 lazyvim-install:
 	mkdir -p ~/.config && ln -snf $(PWD)/nvim ~/.config/
@@ -30,6 +32,8 @@ setup-lazygit:
 	else \
 		echo "Unsupported OS: $$(uname)"; \
 	fi
+
+setup-all: nvim-setup setup-mcp setup-opencode setup-lazygit
 
 asdf-install:
 	asdf plugin add nodejs

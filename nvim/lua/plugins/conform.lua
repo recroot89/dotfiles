@@ -2,6 +2,10 @@ return {
   "stevearc/conform.nvim",
   formatters_by_ft = {
     javascript = { "prettierd" },
+    php = {
+      "pint",
+      "tlint",
+    },
   },
   -- event = { "BufWritePre" },
   --
