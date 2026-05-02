@@ -14,6 +14,7 @@ return {
       },
       servers = {
         ruby_lsp = {
+          cmd = { "asdf", "exec", "ruby-lsp" },
           init_options = {
             addonSettings = {
               ["Ruby LSP Rails"] = {
@@ -25,6 +26,7 @@ return {
             client.server_capabilities.semanticTokensProvider = false
           end,
         },
+        phpactor = {},
         clojure_lsp = {},
         ltex = {
           settings = {

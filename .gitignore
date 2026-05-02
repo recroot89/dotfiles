@@ -2,6 +2,7 @@
 .lsp
 .clj-kondo
 .nrepl-port
+.nvimlog
 
 files/my_aliases
 files/mcp/rails_mcp_projects.yml

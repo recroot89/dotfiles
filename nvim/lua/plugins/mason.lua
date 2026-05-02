@@ -9,6 +9,7 @@ return {
         "stylua",
         "shellcheck",
         "shfmt",
+        "phpactor",
         "clojure-lsp",
         "ruby-lsp",
         "eslint-lsp",

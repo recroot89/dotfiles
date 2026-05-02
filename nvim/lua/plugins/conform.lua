@@ -1,21 +1,10 @@
 return {
-  "stevearc/conform.nvim",
-  formatters_by_ft = {
-    javascript = { "prettierd" },
-    php = {
-      "pint",
-      "tlint",
-    },
+  {
+    "stevearc/conform.nvim",
+    opts = function(_, opts)
+      opts.formatters_by_ft = opts.formatters_by_ft or {}
+      opts.formatters_by_ft.javascript = { "prettierd" }
+      opts.formatters_by_ft.php = { "pint", "tlint" }
+    end,
   },
-  -- event = { "BufWritePre" },
-  --
-  -- opts = {
-  --   default_format_opts = {
-  --     lsp_format = "fallback",
-  --   },
-  -- },
-  --
-  -- init = function()
-  --   vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-  -- end,
 }

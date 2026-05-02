@@ -55,3 +55,8 @@ fi
 
 # Created by `pipx` on 2025-06-10 20:37:57
 export PATH="$PATH:$HOME/.local/bin"
+
+# Created for php 8.3 setup
+export ICU_CXXFLAGS="-std=c++17"
+export PATH="/opt/homebrew/opt/php@8.3/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"

@@ -7,6 +7,8 @@ alias c='code .'
 alias gbrm='git branch | grep -v "main" | xargs git branch -D'
 alias gbrd='git branch | grep -v "develop" | xargs git branch -D'
 alias ghist='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias gupm='git stash && git pull --rebase origin master && git stash pop'
+alias gupb='git stash && ggpur && git stash pop'
 
 # docker
 alias dps='docker ps'

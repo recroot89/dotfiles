@@ -20,3 +20,9 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.g.root_spec = { "cwd" }
+
+vim.filetype.add({
+  extension = {
+    slim = "slim",
+  },
+})
