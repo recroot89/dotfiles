@@ -1,0 +1,10 @@
+input {
+    keyboard {
+        track-layout "window"
+
+        xkb {
+            layout "us,ru"
+            options "grp:ctrl_space_toggle,caps:ctrl_modifier"
+        }
+    }
+}
