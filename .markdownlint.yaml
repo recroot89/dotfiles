@@ -1,0 +1,27 @@
+default: true
+
+MD001: true                 # Header levels should only increment by one
+MD003:                      # Use ATX-style headers (###)
+  style: atx
+MD004: false                # Allow different unordered list markers (*, +, -)
+MD007:                      # List indentation should be 2 spaces
+  indent: 2
+MD009:                      # Trailing spaces (hard line breaks) should be 2
+  br_spaces: 2
+MD012: true                 # No consecutive blank lines
+MD013:                      # Line length should not exceed 140 characters
+  line_length: 140
+  tables: false
+  code_blocks: false
+  headings: false
+MD014: false                # Allow dollar signs without command output
+MD022: true                 # Headers should be surrounded by blank lines
+MD025: false                # Allow multiple top-level headers (H1)
+MD026:                      # No punctuation at the end of headers
+  punctuation: ".,;:!?"
+MD029: false                # Allow ordered list numbers to increment
+MD031: true                 # Code blocks should be surrounded by blank lines
+MD033: false                # Allow inline HTML
+MD040: false                # Do not require language specification for fenced code blocks
+MD041: false                # Allow files without a top-level heading
+
