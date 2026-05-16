@@ -19,7 +19,8 @@ deps-gem:
 	gem install brakeman reek
 	# LSP + types
 	gem install sorbet sorbet-runtime ruby-lsp
-	asdf exec gem install ruby-lsp
+	gem install slim_lint
+	gem install rails-mcp-server
 
 deps-npm:
 	npm install -g neovim

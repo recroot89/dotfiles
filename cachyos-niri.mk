@@ -15,6 +15,7 @@ packages-install:
 		ripgrep lazygit nmap k9s neovim curl \
 		postgresql-libs zip unzip wl-clipboard \
 		docker docker-compose ansible \
+		lua51-dkjson usage \
 		gnome-disk-utility nwg-look papirus-icon-theme
 
 # CONFIGURATION
@@ -30,7 +31,9 @@ fish-config:
 	mkdir -p $(CONFIG_DIR)/fish/conf.d
 	ln -sf $(DOTFILES_DIR)/config/fish/config.fish $(CONFIG_DIR)/fish/config.fish
 	ln -sf $(DOTFILES_DIR)/config/fish/fish_plugins $(CONFIG_DIR)/fish/fish_plugins
-	ln -sf $(DOTFILES_DIR)/config/fish/conf.d/abbreviations.fish $(CONFIG_DIR)/fish/conf.d/abbreviations.fish
+	ln -sf $(DOTFILES_DIR)/config/fish/conf.d/aliases.fish $(CONFIG_DIR)/fish/conf.d/aliases.fish
+	ln -sf $(DOTFILES_DIR)/config/fish/conf.d/git.fish $(CONFIG_DIR)/fish/conf.d/git.fish
+	ln -sf $(DOTFILES_DIR)/config/fish/conf.d/theme.fish $(CONFIG_DIR)/fish/conf.d/theme.fish
 
 ghostty-config:
 	mkdir -p $(CONFIG_DIR)/ghostty
