@@ -1,94 +1,118 @@
-## Requirements
+# Dotfiles
 
-* [Zsh](https://wiki.archlinux.org/title/zsh)
-* [Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+Personal dotfiles for my development environments.
 
-### Global install
+## Getting started
 
-* [Silver Searcher (ag)](https://github.com/ggreer/the_silver_searcher)
-* [fzf](https://github.com/junegunn/fzf)
-* [bat](https://github.com/sharkdp/bat)
-* [fd](https://github.com/sharkdp/fd)
-
-### Recommendations
-
-* [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh)
-* [Nerd Fonts](https://www.nerdfonts.com/)
-* [asdf](https://github.com/asdf-vm/asdf)
-
-### Useful links
-
-* [Git Oh-My-Zsh aliases](https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index)
-* [Lazyvim default keymaps](https://www.lazyvim.org/keymaps)
-* [Telescope default mappings](https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#default-mappings)
-
----
-
-### Getting started
+Clone the repository:
 
 ```sh
 git clone git@github.com:recroot89/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-make dotfiles-install
+```
+
+### CachyOS + Niri setup
+
+```sh
+make fisher-install
+make packages-install
+make setup-configs
+```
+
+Or at once:
+
+```sh
+make cachyos-setup
+```
+
+### Neovim setup
+
+```sh
 make nvim-setup
 make setup-lazygit
 make setup-mcp
-make asdf-install
+make setup-opencode
+```
+
+Or at once:
+
+```sh
+make setup-all
+```
+
+### macOS setup
+
+```sh
+make dotfiles-install
+```
+
+### dependencies setup
+
+```sh
+make asdf-install # only for macOS
+make deps-gem
+make deps-npm
+make deps-pip
+```
+
+Or at once:
+
+```sh
 make deps
-make bat-catppuccin
 ```
 
----
+Current local overrides:
 
-### Keybindings
+- keyboard layout: `us,ru`
+- layout switch: `ctrl + space`
+- `caps lock` as `ctrl`
+- per-window keyboard layout tracking
 
-#### System
+## Notes
 
-* Switch `ctrl` and `caps lock`
-* Use <kbd>ctrl + [</kbd> instead of <kbd>esc</kdb>
+- Prefer symlinks over copying config files.
+- Do not commit generated files.
+- Do not commit runtime state.
+- Keep platform-specific setup separated by Makefile targets.
+- Keep defaults from CachyOS/niri unless there is a clear reason to override them.
 
-#### Moving between visible buffers
+## Useful links
 
-* `<ctrl> h` - move left or open new left split
-* `<ctrl> l` - move right or open new right split
-* `<ctrl> k` - move up or open new top split
-* `<ctrl> j` - move down or open new bottom split
-* `<leader> be` - toggle buffer explorer
-* `<shift> h` - prev buffer
-* `<shift> l` - next buffer
-* `<ctrl> 6` - switch between two nearby buffers
+- [Used Tools](./Tools.md)
+- [Git Oh My Zsh aliases](https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index)
+- [LazyVim default keymaps](https://www.lazyvim.org/keymaps)
+- [Telescope default mappings](https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#default-mappings)
 
-#### Searching
+## Keybindings
 
-* `<leader><leader>` - search files (git files)
-* `<ctrl><n/p>` - next/previous item in the search window
-* `<ctrl><j/k>` - next/previous item in the search window
-* `<ctrl><b>` - scroll up the item preview in the search window
-* `<ctrl><f>` - scroll down the item preview in the search window
+### Moving between visible buffers
 
-#### Code editing and navigation
+- `<ctrl> h` — move left or open new left split
+- `<ctrl> l` — move right or open new right split
+- `<ctrl> k` — move up or open new top split
+- `<ctrl> j` — move down or open new bottom split
+- `<leader> be` — toggle buffer explorer
+- `<shift> h` — previous buffer
+- `<shift> l` — next buffer
+- `<ctrl> 6` — switch between two nearby buffers
 
-* `gcc` - toggle commenting
-* `gd` - go to definition
-* `]с` and `[с` - go through linter errors
-* `g;` – go to the last edited line in the current opened buffer
-* `gS` – convert oneline expression to multiline (useful for functions, arguments, data structures)
-* `gv` – reselect last visual selection
-* `<ctrl> n` – insert next matching word (multicursor)
-* `<leader> f` – format in visual mode (prettier)
-* `<leader> fr` – search & replace
-* `<leader> rn` – replace word under cursor in current file
+### Searching
 
----
+- `<leader><leader>` — search files
+- `<ctrl><n/p>` — next/previous item in the search window
+- `<ctrl><j/k>` — next/previous item in the search window
+- `<ctrl><b>` — scroll up the item preview
+- `<ctrl><f>` — scroll down the item preview
 
-To install useful keybindings and fuzzy completion:
+### Code editing and navigation
 
-```sh
-$HOMEBREW_PREFIX/opt/fzf/install
-```
-
-To use fzf in Vim, add the following line to your .vimrc:
-
-```sh
-set rtp+=$HOMEBREW_PREFIX/opt/fzf
-```
+- `gcc` — toggle comment
+- `gd` — go to definition
+- `]c` and `[c` — go through diagnostics
+- `g;` — go to the last edited line in the current buffer
+- `gS` — convert one-line expression to multiline
+- `gv` — reselect last visual selection
+- `<ctrl> n` — insert next matching word
+- `<leader> f` — format visual selection
+- `<leader> fr` — search and replace
+- `<leader> rn` — rename word under cursor in current file

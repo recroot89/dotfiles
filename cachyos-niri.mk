@@ -3,12 +3,6 @@
 fisher-install:
 	fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update'
 
-niri-install:
-	mkdir -p $(HOME)/.config/niri
-	ln -sf $(CURDIR)/cachyos-niri/config/niri/local.kdl $(HOME)/.config/niri/local.kdl
-	grep -qxF 'include "local.kdl"' $(HOME)/.config/niri/config.kdl || \
-		printf '\ninclude "local.kdl"\n' >> $(HOME)/.config/niri/config.kdl
-
 packages-install:
 	sudo pacman -Syu --needed \
 		fish mise usage ghostty fzf bat fd \
@@ -40,4 +34,12 @@ ghostty-config:
 	mkdir -p $(CONFIG_DIR)/ghostty
 	ln -sf $(DOTFILES_DIR)/config/ghostty/config $(CONFIG_DIR)/ghostty/config
 
-setup-configs: mise-config fish-config ghostty-config
+niri-config:
+	mkdir -p $(HOME)/.config/niri
+	ln -sf $(CURDIR)/cachyos-niri/config/niri/local.kdl $(HOME)/.config/niri/local.kdl
+	grep -qxF 'include "local.kdl"' $(HOME)/.config/niri/config.kdl || \
+		printf '\ninclude "local.kdl"\n' >> $(HOME)/.config/niri/config.kdl
+
+setup-configs: mise-config fish-config ghostty-config niri-config
+
+cachyos-setup: fisher-install packages-install setup-configs
