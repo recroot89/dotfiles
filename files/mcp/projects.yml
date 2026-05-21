@@ -1,7 +1,3 @@
 showmojo:
   project: "~/Projects/Core"
   docs: ~/Projects/showmojo-docs/docs/dev_docs/project_docs
-dotfiles:
-  project: "~/Projects/dotfiles/"
-store:
-  project: "~/Projects/ideastore-rails/"

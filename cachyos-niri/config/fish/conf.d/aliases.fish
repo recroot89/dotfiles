@@ -47,5 +47,10 @@ alias sysinfo 'sudo inxi -Fx'
 alias shsrv 'systemctl list-units --type=service'
 alias srvall 'systemctl list-unit-files --type=service'
 
+alias ll 'eza -lah --git --icons'
+alias la 'eza -lah --git --icons'
+alias lt 'eza --tree --level=2 --icons'
+alias lta 'eza --tree --level=2 --icons -a'
+
 # projects
 alias dotfiles 'cd ~/Projects/dotfiles/'

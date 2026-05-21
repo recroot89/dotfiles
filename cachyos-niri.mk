@@ -11,11 +11,12 @@ niri-install:
 
 packages-install:
 	sudo pacman -Syu --needed \
-		fish mise ghostty fzf bat fd \
+		fish mise usage ghostty fzf bat fd \
 		ripgrep lazygit nmap k9s neovim curl \
 		postgresql-libs zip unzip wl-clipboard \
 		docker docker-compose ansible \
-		lua51-dkjson usage \
+		lua51-dkjson zoxide eza btop dust \
+		ttf-jetbrains-mono-nerd ttf-roboto-mono-nerd noto-fonts noto-fonts-emoji \
 		gnome-disk-utility nwg-look papirus-icon-theme
 
 # CONFIGURATION

@@ -14,4 +14,5 @@ if command -q go
     end
 end
 
+zoxide init fish | source
 mise activate fish | source
