@@ -11,7 +11,8 @@ packages-install:
 		docker docker-compose ansible \
 		lua51-dkjson zoxide eza btop dust \
 		ttf-jetbrains-mono-nerd ttf-roboto-mono-nerd noto-fonts noto-fonts-emoji \
-		gnome-disk-utility nwg-look papirus-icon-theme
+		gnome-disk-utility nwg-look papirus-icon-theme \
+		cliphist
 
 # CONFIGURATION
 
@@ -43,3 +44,14 @@ niri-config:
 setup-configs: mise-config fish-config ghostty-config niri-config
 
 cachyos-setup: fisher-install packages-install setup-configs
+
+# Themes
+
+SDDM_ASTRONAUT_THEME := Themes/astronaut.conf
+
+sddm-astronaut-install:
+	paru -S --needed sddm-astronaut-theme
+	sudo mkdir -p /etc/sddm.conf.d
+	printf "[Theme]\nCurrent=sddm-astronaut-theme\n" | sudo tee /etc/sddm.conf.d/theme.conf >/dev/null
+	printf "[General]\nInputMethod=qtvirtualkeyboard\n" | sudo tee /etc/sddm.conf.d/virtualkbd.conf >/dev/null
+	sudo sed -i 's|^ConfigFile=.*|ConfigFile=$(SDDM_ASTRONAUT_THEME)|' /usr/share/sddm/themes/sddm-astronaut-theme/metadata.desktop
