@@ -21,6 +21,7 @@ return {
         "query",
         "regex",
         "ruby",
+        "elixir",
         "clojure",
         "hcl",
         "terraform",

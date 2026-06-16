@@ -11,6 +11,7 @@ return {
         "shfmt",
         "phpactor",
         "clojure-lsp",
+        "elixir-ls",
         "ruby-lsp",
         "eslint-lsp",
         "vtsls",
