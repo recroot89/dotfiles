@@ -27,16 +27,11 @@ setup-mcp:
 setup-opencode:
 	ln -snf $(PWD)/files/opencode.config.json ~/.config/opencode/config.json
 
-setup-lazygit:
-	@if [ "$$(uname)" = "Linux" ]; then \
-		ln -snf $(PWD)/files/lazygit_config.yml $$HOME/.config/lazygit/config.yml; \
-	elif [ "$$(uname)" = "Darwin" ]; then \
-		ln -snf $(PWD)/files/lazygit_config.yml "$$HOME/Library/Application Support/lazygit/config.yml"; \
-	else \
-		echo "Unsupported OS: $$(uname)"; \
-	fi
+setup-mise:
+	mkdir -p $(HOME)/.config/mise
+	ln -snf $(PWD)/files/mise/config.toml $(HOME)/.config/mise/config.toml
 
-setup-all: nvim-setup setup-mcp setup-opencode setup-lazygit
+setup-all: nvim-setup setup-mcp setup-opencode setup-mise
 
 bat-catppuccin:
 	mkdir -p ~/.config/bat/themes \

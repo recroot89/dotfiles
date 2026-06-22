@@ -1,6 +1,6 @@
 # Development Tools & Packages
 
-This document provides information about all the tools and packages installed by the `install.sh` script.
+This document lists the main tools managed by this repository. System packages are installed by platform-specific setup commands, while language runtimes are managed by `mise`.
 
 ## Shell Framework
 
@@ -60,14 +60,33 @@ This document provides information about all the tools and packages installed by
 
 ## Version Management
 
-### asdf
+### mise
+
+- **Description**: A polyglot runtime and tool version manager
+- **Website**: <https://mise.jdx.dev/>
+- **Purpose**: Installs and activates the development runtimes declared in `files/mise/config.toml`
+- **Managed tools**:
+  - Node.js 24.15.0
+  - Ruby 4.0.2
+  - Python 3.14.6
+  - Erlang/OTP 29.0.2
+  - Elixir 1.20.1
+  - Go (latest)
+  - gopls (latest)
+  - OpenCode (latest)
+
+Install the configured tools with:
+
+```sh
+make mise-install
+```
+
+### asdf (legacy)
 
 - **Description**: A version manager for multiple runtime languages
 - **Website**: <https://asdf-vm.com/>
-- **Purpose**: Manage multiple versions of programming languages (Ruby, Node.js, etc.)
-- **Plugins**:
-  - **Ruby**: For managing Ruby versions
-  - **Node.js**: For managing Node.js versions
+- **Status**: Previously used for Ruby and Node.js; retained here for historical reference
+- **Replacement**: `mise`
 
 ## Git Tools
 
@@ -131,6 +150,6 @@ This document provides information about all the tools and packages installed by
 
 ## Installation Notes
 
-- The script automatically detects your operating system (macOS or Arch Linux)
-- All tools are installed via the appropriate package manager for your system
-- The script includes error handling and checks for existing installations
+- The recommended setup entry points are the targets documented in `README.md`.
+- `mise` configuration is linked to `~/.config/mise/config.toml`.
+- Platform-specific configuration is kept separate from the shared dotfiles setup.

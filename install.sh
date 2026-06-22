@@ -1,93 +1,210 @@
 #!/usr/bin/env bash
 
-# Exit on any error
-set -e
+set -Eeuo pipefail
 
-# Detect OS
-OS="$(uname -s)"
-case "${OS}" in
-    Linux*)     MACHINE=Linux;;
-    Darwin*)    MACHINE=Mac;;
-    *)          MACHINE="UNKNOWN:${OS}"
-esac
+DOTFILES_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+readonly DOTFILES_DIR
+readonly ZSH_DIR="$HOME/.oh-my-zsh"
+readonly ZSH_CUSTOM_DIR="$ZSH_DIR/custom"
 
-echo "Detected OS: ${MACHINE}"
-
-# Define paths
-ZSH_PATH=$HOME/.oh-my-zsh
-ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
-
-# Function to install packages based on OS
-install_packages() {
-    if [[ "$MACHINE" == "Mac" ]]; then
-        # Check if Homebrew is installed
-        if ! command -v brew &> /dev/null; then
-            echo "Installing Homebrew..."
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        fi
-        
-        echo "Installing packages with Homebrew..."
-        brew install fzf the_silver_searcher bat fd postgresql ripgrep lazygit nmap asdf
-        brew install derailed/k9s/k9s
-        
-    elif [[ "$MACHINE" == "Linux" ]]; then
-        # Detect if it's Arch Linux
-        if command -v pacman &> /dev/null; then
-            echo "Installing packages with pacman..."
-            sudo pacman -S --needed fzf the_silver_searcher bat fd postgresql-libs zip unzip xclip ripgrep lazygit nmap asdf-vm k9s
-        else
-            echo "Error: This script currently only supports Arch Linux for Linux distributions"
-            exit 1
-        fi
-    else
-        echo "Unsupported operating system: ${MACHINE}"
-        exit 1
-    fi
+log() {
+  printf '\n==> %s\n' "$*"
 }
 
-# Install Oh My Zsh if not present
-if [ ! -d ${ZSH_PATH} ]; then
-    echo "Installing Oh My Zsh..."
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
+warn() {
+  printf 'Warning: %s\n' "$*" >&2
+}
 
-# Run dotfiles installation if Makefile exists
-if [ -f "Makefile" ]; then
-    echo "Running dotfiles installation..."
-    make dotfiles-install
-else
-    echo "Warning: Makefile not found, skipping dotfiles-install"
-fi
+die() {
+  printf 'Error: %s\n' "$*" >&2
+  exit 1
+}
 
-# Install zsh plugins
-echo "Installing zsh plugins..."
-if [ ! -d "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting" ]; then
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
-else
-    echo "zsh-syntax-highlighting already installed"
-fi
+as_root() {
+  if (( EUID == 0 )); then
+    "$@"
+  elif command -v sudo >/dev/null 2>&1; then
+    sudo "$@"
+  else
+    die "sudo is required to install system packages"
+  fi
+}
 
-if [ ! -d "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" ]; then
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
-else
-    echo "zsh-autosuggestions already installed"
-fi
+install_macos_packages() {
+  local formulae=(
+    actionlint ansible automake awscli bat bison checkmake cmake composer
+    coreutils fd fzf gcc gh git git-delta git-filter-repo gnu-sed gnupg
+    hadolint htop httpie imagemagick kubernetes-cli lazygit libffi libiconv
+    libsass luarocks mise ncdu neovim nmap openjdk pandoc php@8.3 pkgconf
+    postgresql@14 postgresql@15 re2c redis ripgrep rlwrap tesseract
+    the_silver_searcher tldr tmux wget
+    zsh make curl autoconf openssl@3 readline libyaml gmp
+  )
+  local casks=(
+    font-inconsolata
+    font-roboto-mono-nerd-font
+    font-symbols-only-nerd-font
+    ghostty
+    localsend
+    maccy
+    ngrok
+    qview
+    visual-studio-code
+  )
 
-# Install system packages
-install_packages
+  if ! command -v brew >/dev/null 2>&1; then
+    log "Installing Homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Install asdf plugins
-echo "Installing asdf plugins..."
-asdf plugin add ruby || echo "Ruby plugin already installed"
-asdf plugin add nodejs || echo "Node.js plugin already installed"
+    if [[ -x /opt/homebrew/bin/brew ]]; then
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    elif [[ -x /usr/local/bin/brew ]]; then
+      eval "$(/usr/local/bin/brew shellenv)"
+    fi
+  fi
 
-# Run asdf installation if Makefile target exists
-if [ -f "Makefile" ] && grep -q "asdf-install" Makefile; then
-    echo "Running asdf installation..."
-    make asdf-install
-else
-    echo "Warning: asdf-install target not found in Makefile, skipping"
-fi
+  log "Installing macOS packages"
+  brew install "${formulae[@]}"
+  brew install derailed/k9s/k9s
+  brew install --cask "${casks[@]}"
+}
 
-echo "Installation completed successfully!"
-echo "Please restart your terminal or run 'source ~/.zshrc' to apply changes."
+install_arch_packages() {
+  log "Installing Arch Linux packages"
+  as_root pacman -Syu --needed --noconfirm \
+    zsh git make curl base-devel mise \
+    fzf the_silver_searcher bat fd ripgrep lazygit nmap k9s \
+    postgresql-libs zip unzip xclip \
+    autoconf openssl readline libyaml zlib xz tk ncurses
+}
+
+install_apt_packages() {
+  log "Installing Debian/Ubuntu packages"
+  as_root apt-get update
+  as_root apt-get install -y \
+    zsh git make curl ca-certificates build-essential \
+    fzf silversearcher-ag bat fd-find ripgrep nmap \
+    postgresql-client zip unzip xclip \
+    autoconf libssl-dev libreadline-dev libyaml-dev zlib1g-dev \
+    libffi-dev libgdbm-dev libdb-dev libsqlite3-dev libbz2-dev \
+    liblzma-dev tk-dev libncurses-dev
+
+  if apt-cache show lazygit >/dev/null 2>&1; then
+    as_root apt-get install -y lazygit
+  else
+    warn "lazygit is unavailable in this apt repository; skipping"
+  fi
+
+  warn "k9s is not installed automatically on apt-based systems"
+}
+
+install_dnf_packages() {
+  log "Installing Fedora/RHEL packages"
+  as_root dnf install -y \
+    zsh git make curl gcc gcc-c++ patch autoconf \
+    fzf the_silver_searcher bat fd-find ripgrep nmap \
+    postgresql zip unzip xclip \
+    openssl-devel readline-devel libyaml-devel zlib-devel \
+    libffi-devel gdbm-devel libdb-devel sqlite-devel bzip2-devel \
+    xz-devel tk-devel ncurses-devel
+
+  warn "lazygit and k9s are not installed automatically on dnf-based systems"
+}
+
+install_system_packages() {
+  case "$(uname -s)" in
+    Darwin)
+      install_macos_packages
+      ;;
+    Linux)
+      if command -v pacman >/dev/null 2>&1; then
+        install_arch_packages
+      elif command -v apt-get >/dev/null 2>&1; then
+        install_apt_packages
+      elif command -v dnf >/dev/null 2>&1; then
+        install_dnf_packages
+      else
+        die "supported Linux package manager not found (pacman, apt, or dnf)"
+      fi
+      ;;
+    *)
+      die "unsupported operating system: $(uname -s)"
+      ;;
+  esac
+}
+
+install_mise() {
+  export PATH="$HOME/.local/bin:$PATH"
+
+  if command -v mise >/dev/null 2>&1; then
+    return
+  fi
+
+  log "Installing mise"
+  curl -fsSL https://mise.run | sh
+  command -v mise >/dev/null 2>&1 || die "mise installation failed"
+}
+
+install_oh_my_zsh() {
+  if [[ ! -d "$ZSH_DIR" ]]; then
+    log "Installing Oh My Zsh"
+    RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c \
+      "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+      "" --unattended
+  fi
+}
+
+install_zsh_plugin() {
+  local name="$1"
+  local repository="$2"
+  local target="$ZSH_CUSTOM_DIR/plugins/$name"
+
+  if [[ -d "$target" ]]; then
+    log "$name is already installed"
+    return
+  fi
+
+  log "Installing $name"
+  git clone --depth 1 "$repository" "$target"
+}
+
+create_debian_command_aliases() {
+  [[ "$(uname -s)" == Linux ]] || return
+  command -v apt-get >/dev/null 2>&1 || return
+
+  mkdir -p "$HOME/.local/bin"
+  if command -v batcat >/dev/null 2>&1; then
+    ln -snf "$(command -v batcat)" "$HOME/.local/bin/bat"
+  fi
+  if command -v fdfind >/dev/null 2>&1; then
+    ln -snf "$(command -v fdfind)" "$HOME/.local/bin/fd"
+  fi
+}
+
+main() {
+  install_system_packages
+  install_mise
+  install_oh_my_zsh
+
+  mkdir -p "$ZSH_CUSTOM_DIR/plugins"
+  install_zsh_plugin \
+    zsh-syntax-highlighting \
+    https://github.com/zsh-users/zsh-syntax-highlighting.git
+  install_zsh_plugin \
+    zsh-autosuggestions \
+    https://github.com/zsh-users/zsh-autosuggestions.git
+
+  create_debian_command_aliases
+
+  log "Linking dotfiles"
+  mkdir -p "$HOME/.clojure"
+  make -C "$DOTFILES_DIR" dotfiles-install
+
+  log "Installing mise tools"
+  make -C "$DOTFILES_DIR" mise-install
+
+  log "Installation completed"
+  printf 'Restart the terminal or run: exec zsh\n'
+}
+
+main "$@"

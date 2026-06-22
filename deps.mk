@@ -1,10 +1,5 @@
-asdf-install:
-	asdf plugin add nodejs
-	asdf plugin add ruby
-	asdf install nodejs 22.14.0
-	asdf set nodejs 22.14.0
-	asdf install ruby 4.0.2
-	asdf set ruby 4.0.2
+mise-install: setup-mise
+	mise install
 
 deps-gem:
 	gem install neovim
@@ -41,4 +36,13 @@ deps-pip:
 	.venv/bin/pip install vim-vint yamllint codespell autopep8 flake8
 	.venv/bin/pip install bandit pytype spellcheck ansible-lint
 
-deps: deps-gem deps-npm deps-pip
+deps-mix:
+	mix local.hex --force
+	mix local.rebar --force
+	mix archive.install hex phx_new --force
+	mix escript.install hex sobelow --force
+	mix escript.install hex mix_audit --force
+
+# Keep Credo, Dialyxir, Sobelow, mix_audit, ExCoveralls, and Benchee pinned
+# in each project's mix.exs so their versions are reproducible in development and CI.
+deps: deps-gem deps-npm deps-pip deps-mix

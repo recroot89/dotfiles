@@ -1,8 +1,15 @@
 # Dotfiles
 
-Personal dotfiles for my development environments.
+Personal shell, Neovim, runtime, and development-tool configuration. Shared configuration is installed with symlinks; platform-specific setup remains in separate Makefile targets.
 
-## Getting started
+## Requirements
+
+- Git
+- Make
+- Zsh
+- [mise](https://mise.jdx.dev/)
+
+## Installation
 
 Clone the repository:
 
@@ -11,7 +18,62 @@ git clone git@github.com:recroot89/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ```
 
-### CachyOS + Niri setup
+Run the automated bootstrap on macOS, Arch Linux, Debian/Ubuntu, or Fedora/RHEL:
+
+```sh
+./install.sh
+```
+
+The same setup can be run manually with the targets below.
+
+Install the shared shell configuration:
+
+```sh
+make dotfiles-install
+```
+
+Link the global `mise` configuration and install its runtimes:
+
+```sh
+make mise-install
+exec zsh
+```
+
+Install Neovim and application configuration:
+
+```sh
+make nvim-setup
+make setup-mcp
+make setup-opencode
+```
+
+Or run all shared setup targets:
+
+```sh
+make setup-all
+```
+
+> [!WARNING]
+> `nvim-setup` and `setup-all` delete the current Neovim configuration, data, state, and cache before creating the symlink.
+
+Install language-specific packages after the `mise` runtimes are active:
+
+```sh
+make deps
+```
+
+The dependency groups can also be installed separately:
+
+```sh
+make deps-gem
+make deps-npm
+make deps-pip
+make deps-mix
+```
+
+### CachyOS + Niri
+
+Run the platform-specific setup individually:
 
 ```sh
 make fisher-install
@@ -19,54 +81,30 @@ make packages-install
 make setup-configs
 ```
 
-Or at once:
+Or run the complete setup:
 
 ```sh
 make cachyos-setup
 ```
 
-### Neovim setup
-
-```sh
-make nvim-setup
-make setup-lazygit
-make setup-mcp
-make setup-opencode
-```
-
-Or at once:
-
-```sh
-make setup-all
-```
-
-### macOS setup
-
-```sh
-make dotfiles-install
-```
-
-### dependencies setup
-
-```sh
-make asdf-install # only for macOS
-make deps-gem
-make deps-npm
-make deps-pip
-```
-
-Or at once:
-
-```sh
-make deps
-```
-
-Current local overrides:
+Current desktop overrides:
 
 - keyboard layout: `us,ru`
 - layout switch: `ctrl + space`
 - `caps lock` as `ctrl`
 - per-window keyboard layout tracking
+
+## Make targets
+
+| Target | Purpose |
+| --- | --- |
+| `dotfiles-install` | Link Zsh, aliases, Pry, and Clojure configuration |
+| `setup-mise` | Link `~/.config/mise/config.toml` |
+| `mise-install` | Link the config and install all declared runtimes |
+| `nvim-setup` | Reset Neovim state and link this repository's configuration |
+| `setup-all` | Run shared Neovim and application setup |
+| `deps` | Install Ruby, npm, Python, and Elixir development packages |
+| `cachyos-setup` | Run the complete CachyOS + Niri setup |
 
 ## Notes
 

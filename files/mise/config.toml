@@ -1,0 +1,9 @@
+[tools]
+node = "24.15.0"
+ruby = "4.0.2"
+python = "3.14.6"
+erlang = "29.0.2"
+elixir = "1.20.1"
+opencode = "latest"
+go = "latest"
+"go:golang.org/x/tools/gopls" = "latest"

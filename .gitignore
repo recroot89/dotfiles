@@ -3,9 +3,9 @@
 .clj-kondo
 .nrepl-port
 .nvimlog
+nvim.log
 
 files/my_aliases
-files/mcp/rails_mcp_projects.yml
 files/.cpcache
 
 tmp/
