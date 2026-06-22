@@ -36,6 +36,8 @@ deps-pip:
 	.venv/bin/pip install vim-vint yamllint codespell autopep8 flake8
 	.venv/bin/pip install bandit pytype spellcheck ansible-lint
 
+# Keep Credo, Dialyxir, Sobelow, mix_audit, ExCoveralls, and Benchee pinned
+# in each project's mix.exs so their versions are reproducible in development and CI.
 deps-mix:
 	mix local.hex --force
 	mix local.rebar --force
@@ -43,6 +45,4 @@ deps-mix:
 	mix escript.install hex sobelow --force
 	mix escript.install hex mix_audit --force
 
-# Keep Credo, Dialyxir, Sobelow, mix_audit, ExCoveralls, and Benchee pinned
-# in each project's mix.exs so their versions are reproducible in development and CI.
 deps: deps-gem deps-npm deps-pip deps-mix

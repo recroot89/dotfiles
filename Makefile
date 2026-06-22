@@ -20,10 +20,6 @@ lazyvim-install:
 
 nvim-setup: nvim-clean lazyvim-install
 
-setup-mcp:
-	ln -snf $(PWD)/files/mcp/mcpservers.json ~/.config/mcphub/servers.json
-	ln -snf $(PWD)/files/mcp/projects.yml ~/.config/mcp-server/projects.yml
-
 setup-opencode:
 	ln -snf $(PWD)/files/opencode.config.json ~/.config/opencode/config.json
 
