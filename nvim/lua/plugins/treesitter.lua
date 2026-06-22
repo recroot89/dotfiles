@@ -7,9 +7,13 @@ return {
     dependencies = { "RRethy/nvim-treesitter-endwise" },
     opts = function(_, opts)
       opts.endwise = { enable = true }
-      opts.ensure_installed = {
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, {
         "bash",
+        "css",
+        "eex",
         "embedded_template",
+        "heex",
         "html",
         "javascript",
         "json",
@@ -34,7 +38,7 @@ return {
         "gomod",
         "gowork",
         "gosum",
-      }
+      })
     end,
   },
 }

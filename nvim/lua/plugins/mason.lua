@@ -1,8 +1,9 @@
 return {
   {
     "mason-org/mason.nvim",
-    opts = {
-      ensure_installed = {
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, {
         "phpstan",
         "pint",
         "tlint",
@@ -12,11 +13,12 @@ return {
         "phpactor",
         "clojure-lsp",
         "elixir-ls",
+        "tailwindcss-language-server",
         "ruby-lsp",
         "eslint-lsp",
         "vtsls",
         -- "flake8",
-      },
-    },
+      })
+    end,
   },
 }
