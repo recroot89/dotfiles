@@ -14,5 +14,3 @@ bind("i", "<C-ц>", "<C-G>u<C-W>", opts)
 
 bind("n", "<leader>[", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Insert line above" })
 bind("n", "<leader>]", "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>", { desc = "Insert line below" })
-
--- bind("n", "<leader>m", "<cmd>MCPHub<CR>", { desc = "Open MCP Hub" })
