@@ -14,6 +14,14 @@ return {
       },
       servers = {
         ruby_lsp = {
+          mason = false,
+          cmd = function(dispatchers, config)
+            return vim.lsp.rpc.start(
+              { vim.fn.exepath("mise") ~= "" and vim.fn.exepath("mise") or "mise", "exec", "--", "ruby-lsp" },
+              dispatchers,
+              config and config.root_dir and { cwd = config.cmd_cwd or config.root_dir }
+            )
+          end,
           init_options = {
             addonSettings = {
               ["Ruby LSP Rails"] = {
@@ -23,6 +31,16 @@ return {
           },
           on_attach = function(client, bufnr)
             client.server_capabilities.semanticTokensProvider = false
+          end,
+        },
+        rubocop = {
+          mason = false,
+          cmd = function(dispatchers, config)
+            return vim.lsp.rpc.start(
+              { vim.fn.exepath("mise") ~= "" and vim.fn.exepath("mise") or "mise", "exec", "--", "rubocop", "--lsp" },
+              dispatchers,
+              config and config.root_dir and { cwd = config.cmd_cwd or config.root_dir }
+            )
           end,
         },
         phpactor = {},

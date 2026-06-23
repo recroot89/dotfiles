@@ -14,7 +14,6 @@ return {
         "clojure-lsp",
         "elixir-ls",
         "tailwindcss-language-server",
-        "ruby-lsp",
         "eslint-lsp",
         "vtsls",
         -- "flake8",
