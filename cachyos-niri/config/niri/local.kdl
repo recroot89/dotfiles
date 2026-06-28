@@ -10,5 +10,5 @@ input {
 }
 
 layout {
-    gaps 8
+    gaps 6
 }
