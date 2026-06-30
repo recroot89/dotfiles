@@ -30,11 +30,14 @@ deps-npm:
 	npm install -g mcp-hub
 
 deps-pip:
-	python -m venv .venv
-	.venv/bin/pip install --upgrade pip
-	.venv/bin/pip install pynvim
-	.venv/bin/pip install vim-vint yamllint codespell autopep8 flake8
-	.venv/bin/pip install bandit pytype spellcheck ansible-lint
+	# Neovim provider
+	pip install pynvim
+	# Linters and formatters
+	pip install vim-vint yamllint codespell autopep8 flake8
+	# Security analysis and Ansible
+	pip install bandit ansible-lint
+	# MCP servers
+	pip install awx-mcp-server
 
 # Keep Credo, Dialyxir, Sobelow, mix_audit, ExCoveralls, and Benchee pinned
 # in each project's mix.exs so their versions are reproducible in development and CI.
