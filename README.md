@@ -47,6 +47,8 @@ make setup-mcp
 make setup-opencode
 ```
 
+`setup-mcp` creates local MCP configuration from `files/mcp/*.example.*` only when the real files are missing. Keep real project paths and private server configuration in `files/mcp/projects.yml` and `files/mcp/mcp.json`; those files are ignored by git.
+
 Or run all shared setup targets:
 
 ```sh
@@ -102,6 +104,7 @@ Current desktop overrides:
 | `setup-mise` | Link `~/.config/mise/config.toml` |
 | `mise-install` | Link the config and install all declared runtimes |
 | `nvim-setup` | Reset Neovim state and link this repository's configuration |
+| `setup-mcp` | Create local MCP config from examples and link it into `~/.config` |
 | `setup-all` | Run shared Neovim and application setup |
 | `deps` | Install Ruby, npm, Python, and Elixir development packages |
 | `cachyos-setup` | Run the complete CachyOS + Niri setup |

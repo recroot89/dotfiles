@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "env": {
+        "DEFAULT_MINIMUM_TOKENS": "6000"
+      }
+    },
+    "awx": {
+      "command": "python",
+      "args": ["-m", "awx_mcp_server"],
+      "env": {
+        "AWX_BASE_URL": "https://awx.example.com",
+        "AWX_TOKEN": "${AWX_TOKEN}"
+      }
+    }
+  }
+}

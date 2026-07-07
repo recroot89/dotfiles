@@ -7,5 +7,7 @@ nvim.log
 
 files/my_aliases
 files/.cpcache
+files/mcp/mcp.json
+files/mcp/projects.yml
 
 tmp/

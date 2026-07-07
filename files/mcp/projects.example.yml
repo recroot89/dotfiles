@@ -1,0 +1,7 @@
+# Rails MCP Projects
+# Copy this file to projects.yml and keep real project paths local.
+#
+# Format:
+# project_name: /absolute/path/to/project
+
+# my-rails-app: /Users/me/Projects/my-rails-app
