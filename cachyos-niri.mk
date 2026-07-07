@@ -6,7 +6,7 @@ fisher-install:
 packages-install:
 	sudo pacman -Syu --needed \
 		fish mise usage ghostty fzf bat fd \
-		ripgrep lazygit nmap k9s neovim curl \
+		ripgrep lazygit nmap neovim curl \
 		postgresql-libs zip unzip wl-clipboard \
 		docker docker-compose ansible \
 		lua51-dkjson zoxide eza btop dust \
