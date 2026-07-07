@@ -4,7 +4,7 @@
   "mcp": {
     "rails": {
       "type": "local",
-      "command": ["/Users/recroot/Projects/mcp-server/exe/mcp-server", "--mode http"],
+      "command": ["rails-mcp-server", "--mode http"],
       "enabled": true,
       "environment": {
         "RAILS_ENV": "development"
@@ -16,6 +16,14 @@
       "enabled": true,
       "environment": {
         "DEFAULT_MINIMUM_TOKENS": "6000"
+      }
+    },
+    "awx": {
+      "type": "local",
+      "command": ["python", "-m", "awx_mcp_server"],
+      "environment": {
+        "AWX_BASE_URL": "https://awx.example.com",
+        "AWX_TOKEN": "${AWX_TOKEN}"
       }
     }
   }

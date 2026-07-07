@@ -1,3 +1,6 @@
+[settings]
+minimum_release_age_excludes = ["claude-code", "opencode", "codex"]
+
 [tools]
 node = "24.15.0"
 ruby = "4.0.2"
@@ -9,3 +12,5 @@ claude-code = "latest"
 codex = "latest"
 go = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
+lazygit = "latest"
+lazyssh = "latest"

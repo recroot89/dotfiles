@@ -21,7 +21,7 @@ CONFIG_DIR := $(HOME)/.config
 
 mise-config:
 	mkdir -p $(CONFIG_DIR)/mise
-	ln -sf $(DOTFILES_DIR)/config/mise/config.toml $(CONFIG_DIR)/mise/config.toml
+	ln -sf $(PWD)/files/mise/config.toml $(CONFIG_DIR)/mise/config.toml
 
 fish-config:
 	mkdir -p $(CONFIG_DIR)/fish/conf.d
