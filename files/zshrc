@@ -52,3 +52,11 @@ fi
 export ICU_CXXFLAGS="-std=c++17"
 export PATH="/opt/homebrew/opt/php@8.3/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@8.3/sbin:$PATH"
+
+# Codex CLI uses a separate account/state from Codex Desktop
+export CODEX_CLI_HOME="$HOME/.codex-cli-work"
+
+codex-work() {
+  mkdir -p "$CODEX_CLI_HOME"
+  CODEX_HOME="$CODEX_CLI_HOME" command codex "$@"
+}
