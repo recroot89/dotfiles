@@ -26,11 +26,11 @@ alias dcci='docker rmi $(docker images -f "dangling=true" -q) -f'
 alias dcvi='docker volume rm $(docker volume ls -qf dangling=true)'
 
 # docker-compose
-alias dcb='docker-compose build'
-alias dcu='docker-compose up'
-alias dcd='docker-compose down'
-alias dcr='docker-compose restart'
-alias dcs='docker-compose stop'
+alias dcb='docker compose build'
+alias dcu='docker compose up'
+alias dcd='docker compose down'
+alias dcr='docker compose restart'
+alias dcs='docker compose stop'
 
 # k9s
 alias kdev="k9s --context showmojo-dev"
@@ -89,3 +89,9 @@ alias sysinfo='sudo inxi -Fx'
 alias shsrv='systemctl list-units --type=service'
 # show all services
 alias srvall='systemctl list-unit-files --type=service'
+
+# Shared navigation from the former CachyOS shell configuration.
+alias ll='eza -lah --git --icons'
+alias la='eza -lah --git --icons'
+alias lt='eza --tree --level=2 --icons'
+alias lta='eza --tree --level=2 --icons -a'

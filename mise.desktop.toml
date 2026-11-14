@@ -1,0 +1,3 @@
+[dotfiles]
+"~/.config/niri/local.kdl" = { source = "config/niri/local.kdl", mode = "symlink" }
+"~/.config/niri/config.kdl/local-overrides" = { line = 'include "local.kdl"' }

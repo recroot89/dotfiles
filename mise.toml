@@ -1,0 +1,31 @@
+min_version = "2026.11.5"
+include = ["config/mise/config.toml"]
+
+[settings]
+experimental = true
+
+[settings.task]
+run_auto_install = false
+
+[dotfiles]
+"~/.aliases" = { source = "config/zsh/aliases", mode = "symlink" }
+# Private files stay local; existing files and symlinks are left untouched.
+"~/.my_aliases" = { content = "", create_if_missing = true, permissions = "0600" }
+"~/.zshrc" = { source = "config/zsh/zshrc", mode = "symlink" }
+"~/.clojure/deps.edn" = { source = "config/clojure/deps.edn", mode = "symlink" }
+"~/.config/mise/config.toml" = { source = "config/mise/config.toml", mode = "symlink" }
+"~/.config/nvim" = { source = "nvim", mode = "symlink" }
+"~/.config/rails-mcp/projects.yml" = { source = "config/mcp/projects.example.yml", mode = "copy", create_if_missing = true, permissions = "0600" }
+
+[bootstrap.repos]
+"~/.oh-my-zsh" = { url = "https://github.com/ohmyzsh/ohmyzsh.git", depth = 1 }
+"~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" = { url = "https://github.com/zsh-users/zsh-syntax-highlighting.git", depth = 1 }
+"~/.oh-my-zsh/custom/plugins/zsh-autosuggestions" = { url = "https://github.com/zsh-users/zsh-autosuggestions.git", depth = 1 }
+"~/.config/bat/themes/catppuccin" = { url = "https://github.com/catppuccin/bat.git", depth = 1 }
+
+# mise bootstrap runs this after native repos, dotfiles and tools are applied.
+[tasks.bootstrap]
+alias = "bat:cache"
+description = "Rebuild bat's cache after cloning or updating themes"
+dir = "~"
+run = "bat cache --build"

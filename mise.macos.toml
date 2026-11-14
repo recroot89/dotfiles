@@ -1,0 +1,17 @@
+# Apps already supported by mise's own installer; system packages stay outside mise.
+[bootstrap.packages]
+"brew-cask:ghostty" = { adopt = true }
+"brew-cask:helium-browser" = { adopt = true }
+"brew-cask:bitwarden" = { adopt = true }
+"brew-cask:localsend" = { adopt = true }
+"brew-cask:qview" = { adopt = true }
+"brew-cask:visual-studio-code" = { adopt = true }
+"brew-cask:codexbar" = { adopt = true }
+"brew-cask:maccy" = { adopt = true }
+"brew-cask:font-inconsolata" = "latest"
+"brew-cask:font-roboto-mono-nerd-font" = "latest"
+"brew-cask:font-symbols-only-nerd-font" = "latest"
+
+[dotfiles]
+"~/.config/ghostty/platform" = { source = "config/ghostty/macos", mode = "symlink" }
+"~/Library/Application Support/com.mitchellh.ghostty/config" = { source = "config/ghostty/config", mode = "symlink" }

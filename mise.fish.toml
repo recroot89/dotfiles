@@ -1,0 +1,6 @@
+[dotfiles]
+"~/.config/fish/config.fish" = { source = "config/fish/config.fish", mode = "symlink" }
+"~/.config/fish/fish_plugins" = { source = "config/fish/fish_plugins", mode = "symlink" }
+"~/.config/fish/conf.d/aliases.fish" = { source = "config/fish/conf.d/aliases.fish", mode = "symlink" }
+"~/.config/fish/conf.d/git.fish" = { source = "config/fish/conf.d/git.fish", mode = "symlink" }
+"~/.config/fish/conf.d/theme.fish" = { source = "config/fish/conf.d/theme.fish", mode = "symlink" }

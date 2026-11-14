@@ -1,8 +1,3 @@
-set -gx LANG en_US.UTF-8
-set -gx LC_ALL en_US.UTF-8
-set -gx EDITOR nvim
-set -gx BAT_THEME "Catppuccin Mocha"
-
 fish_add_path ~/.local/bin
 
 if command -q go
@@ -14,5 +9,9 @@ if command -q go
     end
 end
 
-zoxide init fish | source
-mise activate fish | source
+if command -q mise
+    mise activate fish | source
+end
+if command -q zoxide
+    zoxide init fish | source
+end

@@ -24,14 +24,13 @@ palette = 13=#f5c2e7
 palette = 14=#94e2d5
 palette = 15=#a6adc8
 
-shell-integration = fish
+shell-integration = detect
 shell-integration-features = no-cursor,sudo,ssh-env,ssh-terminfo
 
 window-padding-x = 10
 window-padding-y = 10
 window-padding-balance = true
 window-theme = dark
-window-decoration = none
 
 copy-on-select = false
 mouse-hide-while-typing = true
@@ -41,3 +40,6 @@ cursor-style = block
 cursor-style-blink = true
 
 scrollback-limit = 100000000
+
+# Platform differences stay small; the rest of this configuration is shared.
+config-file = ?~/.config/ghostty/platform

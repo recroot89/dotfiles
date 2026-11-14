@@ -26,3 +26,15 @@ vim.filetype.add({
     slim = "slim",
   },
 })
+
+-- mise providers have isolated environments; avoid global npm/gem discovery.
+for option, executable in pairs({
+  python3_host_prog = "pynvim-python",
+  node_host_prog = "neovim-node-host",
+  ruby_host_prog = "neovim-ruby-host",
+}) do
+  local path = vim.fn.exepath(executable)
+  if path ~= "" then
+    vim.g[option] = path
+  end
+end

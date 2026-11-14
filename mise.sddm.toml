@@ -1,0 +1,15 @@
+# Opt in after installing SDDM and sddm-astronaut-theme through the OS.
+# The upstream theme already defaults to Themes/astronaut.conf.
+[bootstrap.directories."/etc/sddm.conf.d"]
+os = "linux"
+mode = "0755"
+
+[bootstrap.files."/etc/sddm.conf.d/theme.conf"]
+os = "linux"
+mode = "0644"
+content = "[Theme]\nCurrent=sddm-astronaut-theme\n"
+
+[bootstrap.files."/etc/sddm.conf.d/virtualkbd.conf"]
+os = "linux"
+mode = "0644"
+content = "[General]\nInputMethod=qtvirtualkeyboard\n"

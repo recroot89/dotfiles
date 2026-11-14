@@ -1,0 +1,64 @@
+export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
+
+[ -f ~/.aliases ]     && source ~/.aliases
+[ -f ~/.my_aliases ]  && source ~/.my_aliases
+
+# oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+plugins=(
+  git
+  git-flow-avh
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+source "$ZSH/oh-my-zsh.sh"
+
+# mise
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
+
+HYPHEN_INSENSITIVE="true"
+
+# Uncomment to enable correction (optional)
+# ENABLE_CORRECTION="true"
+
+# Uncomment to show completion dots (optional)
+# COMPLETION_WAITING_DOTS="true"
+
+# Tools expose their integration themselves, independently of the OS package manager.
+if command -v fzf >/dev/null 2>&1; then
+  source <(fzf --zsh)
+fi
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
+if command -v go >/dev/null 2>&1; then
+  dotfiles_gobin="$(go env GOBIN)"
+  path+=("${dotfiles_gobin:-$HOME/go/bin}")
+  unset dotfiles_gobin
+fi
+
+# Codex CLI aliases select accounts; T3Code may share their session/config state.
+export CODEX_CLI_HOME="$HOME/.codex-cli-work"
+
+codex-work() {
+  mkdir -p "$CODEX_CLI_HOME"
+  CODEX_HOME="$CODEX_CLI_HOME" command codex "$@"
+}
+
+export CODEX_CLI_HOME2="$HOME/.codex-cli-work-2"
+
+codex-work-2() {
+  mkdir -p "$CODEX_CLI_HOME2"
+  CODEX_HOME="$CODEX_CLI_HOME2" command codex "$@"
+}
+
+export CODEX_CLI_HOME3="$HOME/.codex-cli-work-3"
+
+codex-work-3() {
+  mkdir -p "$CODEX_CLI_HOME3"
+  CODEX_HOME="$CODEX_CLI_HOME3" command codex "$@"
+}

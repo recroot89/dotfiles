@@ -1,0 +1,3 @@
+[dotfiles]
+"~/.config/ghostty/platform" = { source = "config/ghostty/linux", mode = "symlink" }
+"~/.config/ghostty/config" = { source = "config/ghostty/config", mode = "symlink" }

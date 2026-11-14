@@ -1,0 +1,136 @@
+[tools]
+node = "24.20.0"
+python = "3.14.6"
+erlang = "29.0.2"
+rebar = "latest"
+ruby = "4.0.5"
+elixir = "1.20.1"
+claude-code = { version = "latest", minimum_release_age = "0s" }
+go = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+lazygit = "latest"
+lazyssh = "latest"
+k9s = "latest"
+superfile = "latest"
+"npm:@openai/codex" = { version = "latest", minimum_release_age = "0s" }
+
+# Portable command-line tools: one list for macOS and Linux.
+actionlint = "latest"
+aws-cli = "latest"
+bat = "latest"
+btop = { version = "latest", os = ["linux"] }
+# mise's native conda solver supplies macOS builds without a separate conda install.
+"conda:btop" = { version = "latest", os = ["macos"] }
+"conda:ncdu" = "latest"
+"conda:wget" = "latest"
+# Match Homebrew's g-prefixed GNU commands without replacing macOS BSD tools.
+"conda:gnu-coreutils" = { version = "latest", os = ["macos"] }
+"conda:the_silver_searcher" = "latest"
+checkmake = "latest"
+cmake = "latest"
+delta = "latest"
+dust = "latest"
+eza = "latest"
+fd = "latest"
+fzf = "latest"
+gh = "latest"
+hadolint = "latest"
+java = "21"
+clojure = "1.12.0.1517"
+"vfox:jdx/vfox-php" = "8.3.36"
+
+jq = "latest"
+kubectl = "latest"
+"aqua:neovim/neovim" = "latest"
+pandoc = "latest"
+ripgrep = "latest"
+shellcheck = "latest"
+tealdeer = "latest"
+tmux = "latest"
+tree-sitter = "latest"
+usage = "latest"
+uv = "latest"
+zoxide = "latest"
+
+# Python CLIs get isolated environments rather than global pip installs.
+ansible = "latest"
+"pypi:ansible-lint" = "latest"
+"pypi:autopep8" = "latest"
+"pypi:bandit" = "latest"
+"pypi:codespell" = "latest"
+"pypi:flake8" = "latest"
+"pypi:git-filter-repo" = "latest"
+"pypi:httpie" = "latest"
+"pypi:vim-vint" = { version = "latest", with = ["setuptools<81"] }
+"pypi:yamllint" = "latest"
+"pypi:awx-mcp-server" = "latest"
+
+# Node CLIs and Neovim provider, each owned by mise.
+"npm:prettier" = "latest"
+# Keep ESLint compatible with existing projects that use Airbnb 19.
+"npm:eslint" = "8.57.1"
+"npm:stylelint" = "18"
+"npm:typescript" = "latest"
+"npm:typescript-language-server" = "latest"
+"npm:yaml-language-server" = "latest"
+"npm:bash-language-server" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:jsonlint" = "latest"
+"npm:markdownlint-cli" = "latest"
+
+# Editor providers and Ruby command-line tools.
+"npm:neovim" = "latest"
+"pypi:pynvim" = "latest"
+"gem:neovim" = "latest"
+"gem:ruby-lsp" = "latest"
+"gem:rubocop" = "latest"
+"gem:slim_lint" = "latest"
+"gem:brakeman" = "latest"
+"gem:reek" = "latest"
+"gem:sorbet" = "latest"
+"gem:rails-mcp-server" = "latest"
+"npm:markuplint" = "latest"
+
+# Servers/formatters previously installed by Mason.
+stylua = "latest"
+lua-language-server = "latest"
+shfmt = "latest"
+elixir-ls = "latest"
+"npm:@tailwindcss/language-server" = "latest"
+"npm:@vtsls/language-server" = "latest"
+marksman = "latest"
+"npm:dockerfile-language-server-nodejs" = "latest"
+"npm:@microsoft/compose-language-service" = "latest"
+"npm:@ansible/ansible-language-server" = "latest"
+"npm:@fsouza/prettierd" = "latest"
+"npm:markdownlint-cli2" = "latest"
+"npm:markdown-toc" = "latest"
+"gem:erb-formatter" = "latest"
+"github:phpactor/phpactor" = { version = "latest", asset_pattern = "phpactor.phar", bin = "phpactor", depends = ["vfox:jdx/vfox-php"] }
+"github:phpstan/phpstan" = { version = "latest", asset_pattern = "phpstan.phar", bin = "phpstan", depends = ["vfox:jdx/vfox-php"] }
+"github:laravel/pint" = { version = "latest", asset_pattern = "pint.phar", bin = "pint", depends = ["vfox:jdx/vfox-php"] }
+"github:valentjn/ltex-ls" = { version = "16.0.0", asset_pattern = "ltex-ls-16.0.0.tar.gz", strip_components = 1, bin_path = "bin", depends = ["java"] }
+
+[tools."github:clojure-lsp/clojure-lsp"]
+version = "latest"
+platforms.macos-arm64.asset_pattern = "clojure-lsp-native-macos-aarch64.zip"
+platforms.macos-x64.asset_pattern = "clojure-lsp-native-macos-amd64.zip"
+platforms.linux-arm64.asset_pattern = "clojure-lsp-native-linux-aarch64.zip"
+platforms.linux-x64.asset_pattern = "clojure-lsp-native-linux-amd64.zip"
+
+# Linux AppImage linked from Ghostty's own installation documentation.
+# The app itself has no dependency on the machine's distribution package manager.
+[tools."github:pkgforge-dev/ghostty-appimage"]
+version = "latest"
+os = ["linux"]
+format = "raw"
+bin = "ghostty"
+platforms.linux-x64.asset_pattern = "Ghostty-*-x86_64.AppImage"
+platforms.linux-arm64.asset_pattern = "Ghostty-*-aarch64.AppImage"
+
+[env]
+LANG = "en_US.UTF-8"
+LC_ALL = "en_US.UTF-8"
+EDITOR = "nvim"
+BAT_THEME = "Catppuccin Mocha"
+MIX_REBAR3 = { value = "{{ tools.rebar.path }}/rebar3", tools = true }

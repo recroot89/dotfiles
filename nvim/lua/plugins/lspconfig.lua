@@ -1,3 +1,32 @@
+local function project_cmd(command)
+  return function(dispatchers, config)
+    local argv = { vim.fn.exepath("mise") ~= "" and vim.fn.exepath("mise") or "mise", "exec", "--" }
+    vim.list_extend(argv, command)
+    return vim.lsp.rpc.start(
+      argv,
+      dispatchers,
+      config and config.root_dir and { cwd = config.cmd_cwd or config.root_dir }
+    )
+  end
+end
+
+-- Prefer gems belonging to the project's selected Ruby. Isolated global
+-- tools are a fallback for projects whose Ruby has no server gem installed.
+local function ruby_project_cmd(gem, executable, args)
+  local script = [[
+local_gem, executable = ARGV.shift(2)
+path = begin
+  Gem.bin_path(local_gem, executable)
+rescue Gem::GemNotFoundException
+  exec(executable, *ARGV)
+end
+load path
+]]
+  local command = { "ruby", "-rrubygems", "-e", script, gem, executable }
+  vim.list_extend(command, args or {})
+  return project_cmd(command)
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -13,15 +42,20 @@ return {
         },
       },
       servers = {
+        lua_ls = { mason = false, cmd = project_cmd({ "lua-language-server" }) },
+        bashls = { mason = false, cmd = project_cmd({ "bash-language-server", "start" }) },
+        jsonls = { mason = false, cmd = project_cmd({ "vscode-json-language-server", "--stdio" }) },
+        yamlls = { mason = false, cmd = project_cmd({ "yaml-language-server", "--stdio" }) },
+        dockerls = { mason = false, cmd = project_cmd({ "docker-langserver", "--stdio" }) },
+        docker_compose_language_service = {
+          mason = false,
+          cmd = project_cmd({ "docker-compose-langserver", "--stdio" }),
+        },
+        ansiblels = { mason = false, cmd = project_cmd({ "ansible-language-server", "--stdio" }) },
+        marksman = { mason = false, cmd = project_cmd({ "marksman", "server" }) },
         ruby_lsp = {
           mason = false,
-          cmd = function(dispatchers, config)
-            return vim.lsp.rpc.start(
-              { vim.fn.exepath("mise") ~= "" and vim.fn.exepath("mise") or "mise", "exec", "--", "ruby-lsp" },
-              dispatchers,
-              config and config.root_dir and { cwd = config.cmd_cwd or config.root_dir }
-            )
-          end,
+          cmd = ruby_project_cmd("ruby-lsp", "ruby-lsp"),
           init_options = {
             addonSettings = {
               ["Ruby LSP Rails"] = {
@@ -35,17 +69,17 @@ return {
         },
         rubocop = {
           mason = false,
-          cmd = function(dispatchers, config)
-            return vim.lsp.rpc.start(
-              { vim.fn.exepath("mise") ~= "" and vim.fn.exepath("mise") or "mise", "exec", "--", "rubocop", "--lsp" },
-              dispatchers,
-              config and config.root_dir and { cwd = config.cmd_cwd or config.root_dir }
-            )
-          end,
+          cmd = ruby_project_cmd("rubocop", "rubocop", { "--lsp" }),
         },
-        phpactor = {},
-        clojure_lsp = {},
+        phpactor = { mason = false, cmd = project_cmd({ "phpactor", "language-server" }) },
+        clojure_lsp = { mason = false, cmd = project_cmd({ "clojure-lsp" }) },
+        elixirls = { mason = false, cmd = project_cmd({ "elixir-ls" }) },
+        tailwindcss = { mason = false, cmd = project_cmd({ "tailwindcss-language-server", "--stdio" }) },
+        eslint = { mason = false, cmd = project_cmd({ "vscode-eslint-language-server", "--stdio" }) },
+        vtsls = { mason = false, cmd = project_cmd({ "vtsls", "--stdio" }) },
         ltex = {
+          mason = false,
+          cmd = project_cmd({ "ltex-ls" }),
           settings = {
             ltex = {
               language = "ru-RU",
@@ -53,6 +87,8 @@ return {
           },
         },
         gopls = {
+          mason = false,
+          cmd = project_cmd({ "gopls" }),
           settings = {
             gopls = {
               gofumpt = true,
@@ -95,7 +131,7 @@ return {
         gopls = function(_, opts)
           -- workaround for gopls not supporting semanticTokensProvider
           -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
-          Snacks.util.lsp.on({ name = "gopls" }, function(client, _)
+          Snacks.util.lsp.on({ name = "gopls" }, function(_, client)
             if not client.server_capabilities.semanticTokensProvider then
               local caps = (client.config.capabilities or {})
               local semantic = ((caps.textDocument or {}).semanticTokens or {})

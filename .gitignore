@@ -1,13 +1,13 @@
 .DS_Store
-.lsp
-.clj-kondo
+.lsp/
+.clj-kondo/
+.cpcache/
+.ruby-lsp/
 .nrepl-port
 .nvimlog
 nvim.log
 
-files/my_aliases
-files/.cpcache
-files/mcp/mcp.json
-files/mcp/projects.yml
-
 tmp/
+
+config/zsh/local.zsh
+config/mcp/projects.yml
