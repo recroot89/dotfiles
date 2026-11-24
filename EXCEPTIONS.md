@@ -29,13 +29,12 @@ natively. No native archive/escript installation option is documented. The remai
 
 | Software | Remaining migration work |
 | --- | --- |
-| Bitwarden, VS Code, CodexBar, Maccy, existing fonts | Native mise installation is declared; existing Homebrew ownership has not been transferred. |
+| Bitwarden, CodexBar, Maccy, existing fonts | Native mise installation is declared; existing Homebrew ownership has not been transferred. |
 | PHP-FPM | PHP/Composer CLI is managed by mise; the launchd service retains its original Homebrew configuration/extensions. |
 | PostgreSQL 14/15, Redis | Migrate data, extensions and services separately. PostgreSQL 15 was running when this inventory was taken. |
 | Homebrew JDK | mise selects Java 21; system Java/IDE integration needs checking before the old JDK can be removed. |
 | Git, Python 3.12, native libraries | Their existing system/dependency roles need checking before removal; these are not the selected development runtimes. |
 | `gnu-sed`, `nmap`, `p7zip`, `rlwrap`, `tesseract`, `vips`, `luarocks` | Keep the existing manager until binary compatibility, dependencies and installation have been validated. See native candidates below. |
-| ngrok | Kept in Brewfile. On mise 2026.11.5, its generated-completion arguments contain a staged path that mise does not expand. Native cask installation would fail even though the binary and permission step are supported. See the verified limitation below. |
 | Fish, Niri, SDDM, desktop utilities and fonts on Linux | Keep system shell/session integration and distribution packages with the OS manager. |
 | Other prior setup packages: `gnupg`, `imagemagick`, `automake`, `gcc`, `make`, `zsh`, `zip`, `unzip`, `xclip`, `libpq` | Their OS/build, shell, desktop, database-client or native-library roles have not all been migrated. Keep existing installations; native CLI alternatives need separate compatibility and dependent-library checks. |
 | Other DMG applications | Retain the existing installation until the native installer has been checked. |
@@ -58,7 +57,7 @@ On macOS, install the fallback file directly:
 brew bundle --file=Brewfile
 ```
 
-`Brewfile` is not called by a mise task or hook. It records the verified ngrok fallback and the host libraries/source-build tools,
+`Brewfile` is not called by a mise task or hook. It records host libraries and source-build tools,
 including libyaml and libffi, that retain their Homebrew role.
 
 On Linux, install system shells, compilers, native libraries and desktop components through the distribution.
@@ -134,12 +133,8 @@ Registry shorthands are listed in the [official registry](https://mise.jdx.dev/r
 that an explicit GitHub, HTTP, conda or plugin backend cannot install a tool. The [HTTP backend](https://mise.jdx.dev/dev-tools/backends/http.html)
 requires an explicit version-list source for `latest` and version prefixes; a fixed download URL by itself does not track releases.
 
-## Verified ngrok limitation
+## ngrok migration
 
-The [ngrok cask metadata](https://formulae.brew.sh/api/cask/ngrok.json) runs generated completions through `/usr/bin/env`,
-with the staged ngrok executable as an argument containing `$HOMEBREW_PREFIX`. In mise 2026.11.5, the
-[artifact parser](https://github.com/jdx/mise/blob/v2026.11.5/crates/mise-brew-metadata/src/cask/artifacts/ordinary.rs#L344)
-keeps argument strings unchanged, and the
-[completion runner](https://github.com/jdx/mise/blob/v2026.11.5/crates/mise-system-packages/src/brew/cask/mod.rs#L4051)
-passes them directly without expanding that prefix. The equivalent invocation fails with exit 127. The permission step itself is supported.
-Keep the existing Homebrew installation and account configuration until a fix or another native route has been verified.
+The macOS bootstrap installs ngrok through mise. mise 2026.11.7 fixed prefix expansion in the
+[ngrok cask](https://formulae.brew.sh/cask/ngrok)'s generated completion commands. A clean installation and zsh completion were
+verified on macOS ARM64 with mise 2026.11.12. [mise release notes](https://github.com/jdx/mise/releases/tag/v2026.11.7)

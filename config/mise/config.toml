@@ -3,7 +3,7 @@ node = "24.20.0"
 python = "3.14.6"
 erlang = "29.0.2"
 rebar = "latest"
-ruby = "4.0.5"
+ruby = "4.0.9"
 elixir = "1.20.1"
 claude-code = { version = "latest", minimum_release_age = "0s" }
 go = "latest"
@@ -36,7 +36,6 @@ fzf = "latest"
 gh = "latest"
 hadolint = "latest"
 java = "21"
-clojure = "1.12.0.1517"
 "vfox:jdx/vfox-php" = "8.3.36"
 
 jq = "latest"
@@ -110,13 +109,6 @@ marksman = "latest"
 "github:phpstan/phpstan" = { version = "latest", asset_pattern = "phpstan.phar", bin = "phpstan", depends = ["vfox:jdx/vfox-php"] }
 "github:laravel/pint" = { version = "latest", asset_pattern = "pint.phar", bin = "pint", depends = ["vfox:jdx/vfox-php"] }
 "github:valentjn/ltex-ls" = { version = "16.0.0", asset_pattern = "ltex-ls-16.0.0.tar.gz", strip_components = 1, bin_path = "bin", depends = ["java"] }
-
-[tools."github:clojure-lsp/clojure-lsp"]
-version = "latest"
-platforms.macos-arm64.asset_pattern = "clojure-lsp-native-macos-aarch64.zip"
-platforms.macos-x64.asset_pattern = "clojure-lsp-native-macos-amd64.zip"
-platforms.linux-arm64.asset_pattern = "clojure-lsp-native-linux-aarch64.zip"
-platforms.linux-x64.asset_pattern = "clojure-lsp-native-linux-amd64.zip"
 
 # Linux AppImage linked from Ghostty's own installation documentation.
 # The app itself has no dependency on the machine's distribution package manager.

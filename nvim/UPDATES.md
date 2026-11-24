@@ -51,8 +51,8 @@ formatting/animation choices, project-root behavior and disabled Mason/Rocks. No
   formatter/test integration.
   [Ruby extra](https://github.com/LazyVim/LazyVim/blob/v16.0.2/lua/lazyvim/plugins/extras/lang/ruby.lua),
   [Elixir extra](https://github.com/LazyVim/LazyVim/blob/v16.0.2/lua/lazyvim/plugins/extras/lang/elixir.lua).
-- Endwise at the locked commit attaches itself through FileType events on current Neovim. Its old `opts.endwise.enable`
-  setting is redundant, but the plugin itself is compatible; deleting the plugin would remove wanted functionality.
+- Endwise at the locked commit attaches itself through FileType events on current Neovim. The redundant
+  `opts.endwise.enable` setting and duplicate plugin declaration were removed on 2026-11-24.
   [Locked implementation](https://github.com/RRethy/nvim-treesitter-endwise/blob/8fe8a95/lua/nvim-treesitter-endwise.lua).
 - LazyVim 16's breaking refactoring-plugin change concerns an extra that is not enabled here. The later patch fixes for
   TypeScript selection, nvim-lint arguments and organize-import actions are already in the installed release.
@@ -60,9 +60,7 @@ formatting/animation choices, project-root behavior and disabled Mason/Rocks. No
 
 ## Separate existing integration checks
 
-- `gopls` 0.24.0's own `api-json` does not advertise the configured `analyses.useany` or `codelenses.gc_details` keys.
-  All other configured analyzer, hint and code-lens keys are present, including `fieldalignment`. Confirm the server's
-  initialization warnings before pruning obsolete settings; this is server-version drift, not a LazyVim release migration.
+- Removed `analyses.useany` and `codelenses.gc_details` on 2026-11-24 after checking the settings exposed by `gopls` 0.24.0.
+  The semantic-token workaround was also removed after verifying that this version advertises support on initialization.
   [Gopls settings](https://github.com/golang/tools/blob/gopls/v0.24.0/gopls/doc/settings.md).
-- Neo-tree's custom `oa` command references Avante, which is absent from the current plugin lock/spec. That integration can
-  fail independently of LazyVim updates. Preserve the binding and plugin choices until its intended action is resolved.
+- Removed Neo-tree's `oa` binding and its Avante handler on 2026-11-24.

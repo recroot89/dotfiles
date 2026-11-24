@@ -5,9 +5,9 @@
 "brew-cask:bitwarden" = { adopt = true }
 "brew-cask:localsend" = { adopt = true }
 "brew-cask:qview" = { adopt = true }
-"brew-cask:visual-studio-code" = { adopt = true }
 "brew-cask:codexbar" = { adopt = true }
 "brew-cask:maccy" = { adopt = true }
+"brew-cask:ngrok" = "latest"
 "brew-cask:font-inconsolata" = "latest"
 "brew-cask:font-roboto-mono-nerd-font" = "latest"
 "brew-cask:font-symbols-only-nerd-font" = "latest"

@@ -6,7 +6,7 @@ Tools, supported apps, Git repositories and configuration are managed natively b
 
 ## Install mise
 
-Use mise **2026.11.5+**. Choose your OS:
+Use mise **2026.11.7+**. Choose your OS:
 
 | OS | Install |
 | --- | --- |

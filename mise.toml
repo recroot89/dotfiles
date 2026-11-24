@@ -1,4 +1,4 @@
-min_version = "2026.11.5"
+min_version = "2026.11.7"
 include = ["config/mise/config.toml"]
 
 [settings]
@@ -12,7 +12,6 @@ run_auto_install = false
 # Private files stay local; existing files and symlinks are left untouched.
 "~/.my_aliases" = { content = "", create_if_missing = true, permissions = "0600" }
 "~/.zshrc" = { source = "config/zsh/zshrc", mode = "symlink" }
-"~/.clojure/deps.edn" = { source = "config/clojure/deps.edn", mode = "symlink" }
 "~/.config/mise/config.toml" = { source = "config/mise/config.toml", mode = "symlink" }
 "~/.config/nvim" = { source = "nvim", mode = "symlink" }
 "~/.config/rails-mcp/projects.yml" = { source = "config/mcp/projects.example.yml", mode = "copy", create_if_missing = true, permissions = "0600" }

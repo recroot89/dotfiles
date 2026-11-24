@@ -72,7 +72,6 @@ return {
           cmd = ruby_project_cmd("rubocop", "rubocop", { "--lsp" }),
         },
         phpactor = { mason = false, cmd = project_cmd({ "phpactor", "language-server" }) },
-        clojure_lsp = { mason = false, cmd = project_cmd({ "clojure-lsp" }) },
         elixirls = { mason = false, cmd = project_cmd({ "elixir-ls" }) },
         tailwindcss = { mason = false, cmd = project_cmd({ "tailwindcss-language-server", "--stdio" }) },
         eslint = { mason = false, cmd = project_cmd({ "vscode-eslint-language-server", "--stdio" }) },
@@ -93,7 +92,6 @@ return {
             gopls = {
               gofumpt = true,
               codelenses = {
-                gc_details = false,
                 generate = true,
                 regenerate_cgo = true,
                 run_govulncheck = true,
@@ -116,7 +114,6 @@ return {
                 nilness = true,
                 unusedparams = true,
                 unusedwrite = true,
-                useany = true,
               },
               usePlaceholders = true,
               completeUnimported = true,
@@ -126,27 +123,6 @@ return {
             },
           },
         },
-      },
-      setup = {
-        gopls = function(_, opts)
-          -- workaround for gopls not supporting semanticTokensProvider
-          -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
-          Snacks.util.lsp.on({ name = "gopls" }, function(_, client)
-            if not client.server_capabilities.semanticTokensProvider then
-              local caps = (client.config.capabilities or {})
-              local semantic = ((caps.textDocument or {}).semanticTokens or {})
-              client.server_capabilities.semanticTokensProvider = {
-                full = true,
-                legend = {
-                  tokenTypes = semantic.tokenTypes or {},
-                  tokenModifiers = semantic.tokenModifiers or {},
-                },
-                range = true,
-              }
-            end
-          end)
-          -- end workaround
-        end,
       },
     },
   },

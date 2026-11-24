@@ -1,9 +1,6 @@
 # Install directly with: brew bundle --file=Brewfile
 # This fallback is intentionally not called by mise tasks or hooks.
 
-# mise 2026.11.5 cannot expand ngrok's generated-completion arguments.
-cask "ngrok"
-
 # Native build dependencies for source-based runtime backends (not mise tools).
 brew "autoconf"
 brew "bison"

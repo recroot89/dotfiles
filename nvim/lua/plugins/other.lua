@@ -23,7 +23,6 @@ return {
   { "tpope/vim-rails" },
   { "tree-sitter/tree-sitter-embedded-template" },
   { "nvim-treesitter/nvim-treesitter-context" },
-  { "RRethy/nvim-treesitter-endwise" },
   { "dyng/ctrlsf.vim" },
   {
     "MeanderingProgrammer/render-markdown.nvim",
